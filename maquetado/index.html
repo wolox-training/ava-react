@@ -11,6 +11,10 @@
 </head>
 
 <body>
+  <nav class="nav">
+    <img src="./img/logo-wolox.png" alt="The logo of Wolox" class="nav-logo">
+    <a href="#" class="nav-option">Logout</a>
+  </nav>
   <section class="books-list">
     <article class="book-card book-card-simple">
       <div class="book-cover">
@@ -39,7 +43,7 @@
   <!-- Test script -->
   <script>
     (() => {
-      const cantItems = 7;
+      const cantItems = 20;
       const bookHtml = document.querySelector('.books-list').innerHTML;
       for (let i = 0; i < cantItems; i++) {
         document.querySelector('.books-list').innerHTML += bookHtml;
