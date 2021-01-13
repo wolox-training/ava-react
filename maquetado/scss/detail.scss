@@ -12,7 +12,19 @@
 
   .book-cover {
     max-width: 100%;
+    position: relative;
     width: 261px;
+
+    .book-cover-badge {
+      height: 118.57px;
+      transform: rotate(15deg);
+      position: absolute;
+      right: -20px;
+      top: -17px;
+    }
+    .book-cover-image {
+      width: 100%;
+    }
   }
   .book-detail {
     max-width: 100%;
