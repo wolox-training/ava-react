@@ -1,0 +1,29 @@
+@use 'colors' as colors;
+
+.book-detail {
+  max-width: 100%;
+  padding: 10px;
+  width: 600px;
+
+  .book-title {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  .book-genre {
+    @include colors.secondary-text-color;
+    font-size: 24px;
+  }
+  .separator {
+    border: none;
+    border-top: 4px solid colors.$earls-green;
+  }
+  .book-prop {
+    font-size: 20px;
+    margin-top: 30px;
+    & > .book-prop-description {
+      @include colors.secondary-text-color;
+      font-size: 20px;
+    }
+  }
+}

@@ -1,7 +1,6 @@
-* {
-  font-family: 'Roboto', serif;
-}
+@use 'colors' as colors;
 
-.title {
-  color: red;
+* {
+  @include colors.primary-text-color;
+  font-family: 'Roboto', serif;
 }
