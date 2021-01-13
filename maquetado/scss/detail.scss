@@ -7,13 +7,63 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
-  padding: 24px;
-  width: 900px;
+
+  &:not(.book-card-simple) {
+    padding: 24px;
+    width: 900px;
+    .book-cover {
+      width: 261px;
+    }
+    .book-detail {
+      padding-left: 52px;
+
+      .book-title {
+        font-size: 32px;
+        padding-bottom: 10px;
+      }
+      .book-prop {
+        font-size: 20px;
+        margin-top: 30px;
+      }
+    }
+  }
+  // Simple version
+  &.book-card-simple {
+    width: 198px;
+    padding: 28px;
+
+    .book-cover {
+      width: 142px;
+
+      .book-cover-badge {
+        display: none;
+      }
+    }
+    .book-detail {
+      .book-title {
+        font-size: 16px;
+        margin-top: 12px;
+        padding-bottom: 8px;
+      }
+      .book-genre,
+      .separator,
+      .book-prop:not(.keep-visible-simple) {
+        display: none;
+      }
+      .book-prop {
+        .book-prop-name {
+          display: none;
+        }
+        .book-prop-description {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 
   .book-cover {
     max-width: 100%;
     position: relative;
-    width: 261px;
 
     .book-cover-badge {
       height: 118.57px;
@@ -28,13 +78,10 @@
   }
   .book-detail {
     max-width: 100%;
-    padding-left: 52px;
     width: 520px;
 
     .book-title {
-      font-size: 32px;
       font-weight: bold;
-      padding-bottom: 10px;
     }
     .book-genre {
       @include colors.secondary-text-color;
@@ -45,8 +92,6 @@
       border-top: 4px solid colors.$earls-green;
     }
     .book-prop {
-      font-size: 20px;
-      margin-top: 30px;
       & > .book-prop-description {
         @include colors.secondary-text-color;
         font-size: 20px;
@@ -56,7 +101,7 @@
 }
 
 @media (max-width: sizes.$breakpoint-tablet) {
-  .book-card {
+  .book-card:not(.book-card-simple) {
     justify-content: center;
 
     .book-detail {
