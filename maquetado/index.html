@@ -11,29 +11,41 @@
 </head>
 
 <body>
-  <article class="book-card book-card-simple">
-    <div class="book-cover">
-      <img src="./img/badge.png" alt="favorites badge" class="book-cover-badge" />
-      <img src="./img/book-cover.png" alt="The image of Books title" class="book-cover-image">
-    </div>
-    <div class="book-detail">
-      <h3 class="book-title">Título del libro</h3> <span class="book-genre">(género)</span>
-      <hr class="separator">
+  <section class="books-list">
+    <article class="book-card book-card-simple">
+      <div class="book-cover">
+        <img src="./img/badge.png" alt="favorites badge" class="book-cover-badge" />
+        <img src="./img/book-cover.png" alt="The image of Books title" class="book-cover-image">
+      </div>
+      <div class="book-detail">
+        <h3 class="book-title">Título del libro</h3> <span class="book-genre">(género)</span>
+        <hr class="separator">
 
-      <div class="book-prop keep-visible-simple">
-        <b class="book-prop-name">Autor del libro:</b> <span class="book-prop-description"> Nombre del autor del
-          libro</span>
+        <div class="book-prop keep-visible-simple">
+          <b class="book-prop-name">Autor del libro:</b> <span class="book-prop-description"> Nombre del autor del
+            libro</span>
+        </div>
+        <div class="book-prop">
+          <b class="book-prop-name">Editorial:</b> <span class="book-prop-description"> Nombre de la editorial</span>
+        </div>
+        <div class="book-prop">
+          <b class="book-prop-name">Año de publicacion: </b> <span class="book-prop-description"> Año de
+            publicacion</span>
+        </div>
       </div>
-      <div class="book-prop">
-        <b class="book-prop-name">Editorial:</b> <span class="book-prop-description"> Nombre de la editorial</span>
-      </div>
-      <div class="book-prop">
-        <b class="book-prop-name">Año de publicacion: </b> <span class="book-prop-description"> Año de
-          publicacion</span>
-      </div>
-    </div>
-  </article>
+    </article>
+  </section>
 
+  <!-- Test script -->
+  <script>
+    (() => {
+      const cantItems = 7;
+      const bookHtml = document.querySelector('.books-list').innerHTML;
+      for (let i = 0; i < cantItems; i++) {
+        document.querySelector('.books-list').innerHTML += bookHtml;
+      }
+    })();
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,17 @@
+@use 'sizes' as sizes;
+
+.books-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  justify-content: center;
+  max-width: 100%;
+  padding: 36px;
+  width: 1024px;
+}
+
+@media (max-width: sizes.$breakpoint-tablet) {
+  .books-list {
+    padding: 18px;
+  }
+}
