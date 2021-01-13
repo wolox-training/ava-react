@@ -1,6 +1,8 @@
 $primary-text-color: #000;
 $secondary-text-color: #828282;
 $earls-green: #bed23c;
+$background-color: #fff;
+$border-color: rgba($primary-text-color, 0.5);
 
 @mixin primary-text-color {
   color: $primary-text-color;

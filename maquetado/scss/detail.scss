@@ -2,11 +2,12 @@
 @use 'sizes' as sizes;
 
 .book-card {
+  background-color: colors.$background-color;
+  box-shadow: 4px 4px 10px 0 colors.$border-color;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   max-width: 100%;
-  padding: 10px;
+  padding: 24px;
   width: 900px;
 
   .book-cover {
@@ -16,7 +17,7 @@
   .book-detail {
     max-width: 100%;
     padding-left: 52px;
-    width: 600px;
+    width: 520px;
 
     .book-title {
       font-size: 32px;
@@ -44,6 +45,8 @@
 
 @media (max-width: sizes.$breakpoint-tablet) {
   .book-card {
+    justify-content: center;
+
     .book-detail {
       padding: 0 10px;
     }
