@@ -1,4 +1,6 @@
 @use 'colors' as colors;
+@use 'sizes' as sizes;
+
 .book-card {
   display: flex;
   flex-wrap: wrap;
@@ -13,7 +15,7 @@
   }
   .book-detail {
     max-width: 100%;
-    padding: 0 10px;
+    padding-left: 52px;
     width: 600px;
 
     .book-title {
@@ -36,6 +38,14 @@
         @include colors.secondary-text-color;
         font-size: 20px;
       }
+    }
+  }
+}
+
+@media (max-width: sizes.$breakpoint-tablet) {
+  .book-card {
+    .book-detail {
+      padding: 0 10px;
     }
   }
 }
