@@ -1,6 +1,46 @@
 @use '../colors' as colors;
 
 .login-container {
+  background-color: colors.$wild-sand;
+  display: grid;
+  max-width: 100%;
+  padding: 24px;
+  width: 300px;
+
+  .wolox-logo {
+    justify-self: center;
+    width: 212.42px;
+  }
+
+  .login-form {
+    .input {
+      border-radius: 8px;
+      height: 32px;
+      max-width: 100%;
+      width: 252px;
+    }
+    .login-form-submit {
+      @extend .input;
+      margin-top: 24px;
+      background-color: colors.$earls-green;
+      color: colors.$white;
+    }
+
+    .login-form-row {
+      .login-form-label {
+        margin: 16px 0 8px 0;
+      }
+
+      .login-form-input {
+        @extend .input;
+        display: block;
+      }
+    }
+  }
+
   &::before {
+    border-top: 6px solid colors.$cerulean;
+    content: '';
+    display: block;
   }
 }
