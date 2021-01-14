@@ -8,22 +8,25 @@
   .book-title {
     font-size: 32px;
     font-weight: bold;
-    padding: 10px 0;
+    width: 100%;
+
+    .book-genre {
+      @include colors.secondary-text-color;
+      font-size: 24px;
+    }
   }
 
-  .book-genre {
-    @include colors.secondary-text-color;
-    font-size: 24px;
-  }
-
-  .separator {
-    border: none;
-    border-top: 4px solid colors.$earls-green;
+  .separator::after {
+    border-bottom: 4px solid colors.$earls-green;
+    content: '';
+    display: block;
+    margin-top: 10px;
   }
 
   .book-prop {
     font-size: 20px;
     margin-top: 30px;
+
     & > .book-prop-description {
       @include colors.secondary-text-color;
       font-size: 20px;
