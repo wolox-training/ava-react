@@ -8,12 +8,12 @@
   content: '';
   display: flex;
   justify-content: center;
-  height: 118.57px;
+  height: 115px;
   position: absolute;
   right: -20px;
   transform: rotate(15deg);
-  top: -17px;
-  width: 94.53px;
+  top: -15px;
+  width: 95px;
 }
 
 .book-card {
@@ -24,13 +24,13 @@
   max-width: 100%;
 
   &:not(.book-card-simple) {
-    padding: 24px;
+    padding: 25px;
     width: 900px;
     .book-cover {
-      width: 261px;
+      width: 260px;
     }
     .book-detail {
-      margin-left: 52px;
+      margin-left: 50px;
 
       .book-title {
         font-size: 32px;
@@ -50,22 +50,22 @@
   }
   // Simple version
   &.book-card-simple {
-    width: 198px;
-    padding: 28px;
+    width: 200px;
+    padding: 30px;
 
     & > .badge::after {
       display: none;
     }
 
     .book-cover {
-      width: 142px;
+      width: 140px;
     }
 
     .book-detail {
       .book-title {
         font-size: 16px;
-        margin-top: 12px;
-        margin-bottom: 8px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
 
       .book-genre,
