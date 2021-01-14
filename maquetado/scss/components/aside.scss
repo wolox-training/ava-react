@@ -12,9 +12,11 @@
     margin: 22px;
 
     &::before {
-      align-items: center;
-      content: url('../../img/back-arrow-20.png');
-      padding-right: 10px;
+      content: '';
+      background: url('../../img/back-arrow-20.png') no-repeat;
+      margin-right: 10px;
+      height: 20px;
+      width: 20px;
     }
   }
 }
