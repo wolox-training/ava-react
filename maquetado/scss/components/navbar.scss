@@ -3,7 +3,6 @@
 .nav {
   align-items: center;
   background-color: colors.$background-color;
-  border-top: 6px solid colors.$cerulean;
   box-shadow: 0 4px 10px 0 colors.$border-color;
   display: flex;
   height: 70px;
@@ -12,11 +11,21 @@
   top: 0;
   z-index: 1;
 
+  &::before {
+    border-top: 6px solid colors.$cerulean;
+    top: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+  }
+
   .nav-logo {
     height: 100%;
   }
+
   .nav-option {
     font-size: 18px;
+
     &:hover {
       color: colors.$cerulean;
       transition: all 0.8s;
