@@ -16,7 +16,7 @@
         alt="The logo of Wolox"
         class="wolox-logo"
       />
-      <form class="login-form">
+      <form class="login-form" onsubmit="return false;">
         <div class="login-form-row">
           <label for="" class="login-form-label">Email</label>
           <input type="text" class="login-form-input" />
@@ -25,9 +25,16 @@
           <label for="" class="login-form-label">Password</label>
           <input type="password" class="login-form-input" />
         </div>
-        <button type="submit" class="login-form-submit">Login</button>
+        <button type="submit" class="login-form-submit" onclick="goBooksList()">
+          Login
+        </button>
       </form>
-      <button type="button" class="sign-up-button">Sign Up</button>
+      <button type="button" class="sign-up-button" onclick="goBooksList()">
+        Sign Up
+      </button>
     </div>
+    <script>
+      const goBooksList = () => (window.location.href = '/books-list.html');
+    </script>
   </body>
 </html>
