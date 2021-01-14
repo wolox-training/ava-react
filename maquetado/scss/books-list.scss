@@ -3,16 +3,16 @@
 .books-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 36px;
+  gap: 35px;
   justify-content: center;
   margin: auto;
   max-width: 100%;
-  padding: 36px;
-  width: 1024px;
+  padding: 35px;
+  width: 1025px;
 }
 
 @media (max-width: sizes.$breakpoint-tablet) {
   .books-list {
-    padding: 18px;
+    padding: 15px;
   }
 }
