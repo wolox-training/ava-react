@@ -1,6 +1,21 @@
 @use 'colors' as colors;
 @use 'sizes' as sizes;
 
+.badge::after {
+  background: url('../img/badge.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  content: '';
+  display: flex;
+  justify-content: center;
+  height: 118.57px;
+  position: absolute;
+  right: -20px;
+  transform: rotate(15deg);
+  top: -17px;
+  width: 94.53px;
+}
+
 .book-card {
   background-color: colors.$background-color;
   box-shadow: 4px 4px 10px 0 colors.$border-color;
@@ -14,14 +29,6 @@
     max-width: 100%;
     position: relative;
     width: 261px;
-
-    .book-cover-badge {
-      height: 118.57px;
-      transform: rotate(15deg);
-      position: absolute;
-      right: -20px;
-      top: -17px;
-    }
 
     .book-cover-image {
       width: 100%;
