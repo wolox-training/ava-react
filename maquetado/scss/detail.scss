@@ -14,6 +14,7 @@
     max-width: 100%;
     width: 261px;
   }
+
   .book-detail {
     max-width: 100%;
     padding-left: 52px;
@@ -22,22 +23,32 @@
     .book-title {
       font-size: 32px;
       font-weight: bold;
-      padding-bottom: 10px;
-    }
-    .book-genre {
-      @include colors.secondary-text-color;
-      font-size: 24px;
-    }
-    .separator {
-      border: none;
-      border-top: 4px solid colors.$earls-green;
-    }
-    .book-prop {
-      font-size: 20px;
-      margin-top: 30px;
-      & > .book-prop-description {
+      width: 100%;
+
+      .book-genre {
         @include colors.secondary-text-color;
+        font-size: 24px;
+      }
+    }
+
+    .separator::after {
+      border-bottom: 4px solid colors.$earls-green;
+      content: '';
+      display: block;
+      margin-top: 10px;
+    }
+
+    .book-props {
+      padding-top: 30px;
+
+      .book-prop {
         font-size: 20px;
+        margin-bottom: 30px;
+
+        & > .book-prop-description {
+          @include colors.secondary-text-color;
+          font-size: 20px;
+        }
       }
     }
   }
