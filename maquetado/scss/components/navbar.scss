@@ -15,8 +15,10 @@
   .nav-logo {
     height: 100%;
   }
+
   .nav-option {
     font-size: 18px;
+
     &:hover {
       color: colors.$cerulean;
       transition: all 0.8s;
