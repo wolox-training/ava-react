@@ -9,11 +9,14 @@
   max-width: 100%;
 
   &:not(.book-card-simple) {
+    margin-top: 74px;
     padding: 24px;
     width: 900px;
+
     .book-cover {
       width: 261px;
     }
+
     .book-detail {
       padding-left: 52px;
 
@@ -21,6 +24,7 @@
         font-size: 32px;
         padding-bottom: 10px;
       }
+
       .book-prop {
         font-size: 20px;
         margin-top: 30px;
