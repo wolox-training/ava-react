@@ -30,7 +30,7 @@
       width: 261px;
     }
     .book-detail {
-      padding-left: 52px;
+      margin-left: 52px;
 
       .book-title {
         font-size: 32px;
@@ -65,7 +65,7 @@
       .book-title {
         font-size: 16px;
         margin-top: 12px;
-        padding-bottom: 8px;
+        margin-bottom: 8px;
       }
 
       .book-genre,
@@ -132,7 +132,7 @@
     justify-content: center;
 
     .book-detail {
-      padding: 0 10px;
+      margin: 0 10px;
     }
   }
 }
