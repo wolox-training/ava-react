@@ -1,4 +1,10 @@
 .layout {
   display: flex;
   flex-wrap: wrap;
+  min-height: 100vh;
+
+  &.layout-center {
+    justify-content: center;
+    align-items: center;
+  }
 }
