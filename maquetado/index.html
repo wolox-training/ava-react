@@ -1,34 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML & CSS Training</title>
+    <meta name="description" content="training" />
+    <meta name="author" content="Wolox" />
+    <link rel="stylesheet" type="text/css" href="css/application.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>HTML & CSS Training</title>
-  <meta name="description" content="training">
-  <meta name="author" content="Wolox">
-  <link rel="stylesheet" type="text/css" href="css/application.css">
-</head>
+  <body>
+    <article class="book-card">
+      <img
+        src="./img/book-cover.png"
+        alt="The image of Books title"
+        class="book-cover"
+      />
 
-<body>
-  <article class="book-card">
-    <img src="./img/book-cover.png" alt="The image of Books title" class="book-cover">
-    <div class="book-detail">
-      <h3 class="book-title">Título del libro</h3> <span class="book-genre">(género)</span>
-      <hr class="separator">
+      <div class="book-detail">
+        <h3 class="book-title separator">
+          Título del libro
+          <span class="book-genre">(género)</span>
+        </h3>
 
-      <div class="book-prop">
-        <b>Autor del libro:</b> <span class="book-prop-description"> Nombre del autor del libro</span>
+        <div class="book-prop">
+          <b>Autor del libro:</b>
+          <span class="book-prop-description"> Nombre del autor del libro</span>
+        </div>
+        <div class="book-prop">
+          <b>Editorial:</b>
+          <span class="book-prop-description"> Nombre de la editorial</span>
+        </div>
+        <div class="book-prop">
+          <b>Año de publicacion: </b>
+          <span class="book-prop-description"> Año de publicacion</span>
+        </div>
       </div>
-      <div class="book-prop">
-        <b>Editorial:</b> <span class="book-prop-description"> Nombre de la editorial</span>
-      </div>
-      <div class="book-prop">
-        <b>Año de publicacion: </b> <span class="book-prop-description"> Año de publicacion</span>
-      </div>
-    </div>
-  </article>
-
-</body>
-
+    </article>
+  </body>
 </html>
