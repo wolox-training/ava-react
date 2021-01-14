@@ -1,6 +1,21 @@
 @use '../colors' as colors;
 @use '../sizes' as sizes;
 
+.badge::after {
+  background: url('../img/badge.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  content: '';
+  display: flex;
+  justify-content: center;
+  height: 118.57px;
+  position: absolute;
+  right: -20px;
+  transform: rotate(15deg);
+  top: -17px;
+  width: 94.53px;
+}
+
 .book-card {
   background-color: colors.$background-color;
   box-shadow: 4px 4px 10px 0 colors.$border-color;
@@ -15,15 +30,21 @@
       width: 261px;
     }
     .book-detail {
-      padding-left: 52px;
+      margin-left: 52px;
 
       .book-title {
         font-size: 32px;
-        padding-bottom: 10px;
       }
-      .book-prop {
-        font-size: 20px;
-        margin-top: 30px;
+      .book-props {
+        padding-top: 30px;
+
+        .book-prop {
+          font-size: 20px;
+          margin-bottom: 30px;
+          .book-prop-description {
+            font-size: 20px;
+          }
+        }
       }
     }
   }
@@ -32,30 +53,35 @@
     width: 198px;
     padding: 28px;
 
+    & > .badge::after {
+      display: none;
+    }
+
     .book-cover {
       width: 142px;
-
-      .book-cover-badge {
-        display: none;
-      }
     }
+
     .book-detail {
       .book-title {
         font-size: 16px;
         margin-top: 12px;
-        padding-bottom: 8px;
+        margin-bottom: 8px;
       }
+
       .book-genre,
-      .separator,
-      .book-prop:not(.keep-visible-simple) {
+      .separator::after,
+      .book-props > .book-prop:not(.keep-visible-simple) {
         display: none;
       }
-      .book-prop {
-        .book-prop-name {
-          display: none;
-        }
-        .book-prop-description {
-          font-size: 14px;
+
+      .book-props {
+        .book-prop {
+          .book-prop-name {
+            display: none;
+          }
+          .book-prop-description {
+            font-size: 14px;
+          }
         }
       }
     }
@@ -65,36 +91,37 @@
     max-width: 100%;
     position: relative;
 
-    .book-cover-badge {
-      height: 118.57px;
-      transform: rotate(15deg);
-      position: absolute;
-      right: -20px;
-      top: -17px;
-    }
     .book-cover-image {
       width: 100%;
     }
   }
+
   .book-detail {
     max-width: 100%;
     width: 520px;
 
     .book-title {
       font-weight: bold;
-    }
-    .book-genre {
-      @include colors.secondary-text-color;
-      font-size: 24px;
-    }
-    .separator {
-      border: none;
-      border-top: 4px solid colors.$earls-green;
-    }
-    .book-prop {
-      & > .book-prop-description {
+      width: 100%;
+
+      .book-genre {
         @include colors.secondary-text-color;
-        font-size: 20px;
+        font-size: 24px;
+      }
+    }
+
+    .separator::after {
+      border-bottom: 4px solid colors.$earls-green;
+      content: '';
+      display: block;
+      margin-top: 10px;
+    }
+
+    .book-props {
+      .book-prop {
+        & > .book-prop-description {
+          @include colors.secondary-text-color;
+        }
       }
     }
   }
@@ -105,7 +132,7 @@
     justify-content: center;
 
     .book-detail {
-      padding: 0 10px;
+      margin: 0 10px;
     }
   }
 }
