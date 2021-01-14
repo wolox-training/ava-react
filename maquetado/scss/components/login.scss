@@ -2,45 +2,50 @@
 
 .login-container {
   background-color: colors.$wild-sand;
+  border-top: 6px solid colors.$cerulean;
   display: grid;
+  font-size: 16px;
   max-width: 100%;
-  padding: 24px;
+  padding: 25px;
   width: 300px;
 
   .wolox-logo {
     justify-self: center;
-    width: 212.42px;
+    width: 210px;
   }
 
   .login-form {
-    .input {
-      border-radius: 8px;
-      height: 32px;
-      max-width: 100%;
-      width: 252px;
+    &::after {
+      content: '';
+      display: block;
+      border-bottom: 2px solid colors.$silver-chalice;
+      margin: 15px 0;
     }
+
+    .input {
+      border-radius: 5px;
+      height: 30px;
+      max-width: 100%;
+      width: 250px;
+    }
+
     .login-form-submit {
       @extend .input;
-      margin-top: 24px;
+      margin-top: 25px;
       background-color: colors.$earls-green;
       color: colors.$white;
     }
 
     .login-form-row {
       .login-form-label {
-        margin: 16px 0 8px 0;
+        margin: 15px 0 10px 0;
       }
 
       .login-form-input {
         @extend .input;
         display: block;
+        padding: 0 10px;
       }
     }
-  }
-
-  &::before {
-    border-top: 6px solid colors.$cerulean;
-    content: '';
-    display: block;
   }
 }
