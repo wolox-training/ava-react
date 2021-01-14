@@ -14,19 +14,19 @@
     width: 210px;
   }
 
+  .input {
+    border-radius: 5px;
+    height: 30px;
+    max-width: 100%;
+    width: 250px;
+  }
+
   .login-form {
     &::after {
       content: '';
       display: block;
       border-bottom: 2px solid colors.$silver-chalice;
       margin: 15px 0;
-    }
-
-    .input {
-      border-radius: 5px;
-      height: 30px;
-      max-width: 100%;
-      width: 250px;
     }
 
     .login-form-submit {
@@ -47,5 +47,11 @@
         padding: 0 10px;
       }
     }
+  }
+
+  .sign-up-button {
+    @extend .input;
+    border: 1px solid colors.$earls-green;
+    color: colors.$earls-green;
   }
 }
