@@ -4,7 +4,6 @@ $badge-width-desktop: 95px;
 $badge-width-mobile: calc(
   #{$badge-width-desktop} - (#{$badge-width-desktop} * 30 / 100)
 );
-// $badge-width-mobile: $badge-width-desktop * 70 / 100;
 
 .badge::after {
   background: url('../img/badge.png');
@@ -30,13 +29,16 @@ $badge-width-mobile: calc(
   width: 100%;
 
   &:not(.book-card-simple) {
+    display: grid;
+    grid-gap: 0 35px;
+    grid-template-areas:
+      'book-cover book-title'
+      'book-cover book-props';
+    grid-auto-columns: 260px auto;
+    grid-template-rows: 70px auto;
     margin-top: 75px;
     padding: 25px;
     max-width: 900px;
-
-    .book-cover {
-      width: 260px;
-    }
 
     .book-title {
       font-size: 32px;
@@ -97,6 +99,7 @@ $badge-width-mobile: calc(
   }
 
   .book-cover {
+    grid-area: book-cover;
     max-width: 100%;
     position: relative;
 
@@ -107,6 +110,7 @@ $badge-width-mobile: calc(
 
   .book-title {
     font-weight: bold;
+    grid-area: book-title;
     width: 100%;
 
     .book-genre {
@@ -123,6 +127,8 @@ $badge-width-mobile: calc(
   }
 
   .book-props {
+    grid-area: book-props;
+
     .book-prop {
       & > .book-prop-description {
         @include colors.secondary-text-color;
@@ -138,7 +144,6 @@ $badge-width-mobile: calc(
   }
 
   .book-card:not(.book-card-simple) {
-    display: grid;
     justify-content: center;
     margin-top: 0;
     grid-gap: 30px;
@@ -147,12 +152,7 @@ $badge-width-mobile: calc(
       'book-cover book-props';
     grid-template-columns: minmax(auto, 200px) auto;
 
-    .book-cover {
-      grid-area: book-cover;
-    }
-
     .book-title {
-      grid-area: book-title;
       text-align: center;
 
       &::after {
@@ -163,9 +163,9 @@ $badge-width-mobile: calc(
         display: block;
       }
     }
+
     .book-props {
       align-self: center;
-      grid-area: book-props;
 
       .book-prop {
         margin-bottom: 18px;
