@@ -38,21 +38,17 @@ $badge-width-mobile: calc(
       width: 260px;
     }
 
-    .book-detail {
-      margin-left: 50px;
+    .book-title {
+      font-size: 32px;
+    }
+    .book-props {
+      padding-top: 30px;
 
-      .book-title {
-        font-size: 32px;
-      }
-      .book-props {
-        padding-top: 30px;
-
-        .book-prop {
+      .book-prop {
+        font-size: 20px;
+        margin-bottom: 30px;
+        .book-prop-description {
           font-size: 20px;
-          margin-bottom: 30px;
-          .book-prop-description {
-            font-size: 20px;
-          }
         }
       }
     }
@@ -75,27 +71,25 @@ $badge-width-mobile: calc(
       width: 140px;
     }
 
-    .book-detail {
-      .book-title {
-        font-size: 16px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
+    .book-title {
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
-      .book-genre,
-      .separator::after,
-      .book-props > .book-prop:not(.keep-visible-simple) {
-        display: none;
-      }
+    .book-genre,
+    .separator::after,
+    .book-props > .book-prop:not(.keep-visible-simple) {
+      display: none;
+    }
 
-      .book-props {
-        .book-prop {
-          .book-prop-name {
-            display: none;
-          }
-          .book-prop-description {
-            font-size: 14px;
-          }
+    .book-props {
+      .book-prop {
+        .book-prop-name {
+          display: none;
+        }
+        .book-prop-description {
+          font-size: 14px;
         }
       }
     }
@@ -110,32 +104,27 @@ $badge-width-mobile: calc(
     }
   }
 
-  .book-detail {
-    max-width: 100%;
-    width: 520px;
+  .book-title {
+    font-weight: bold;
+    width: 100%;
 
-    .book-title {
-      font-weight: bold;
-      width: 100%;
+    .book-genre {
+      @include colors.secondary-text-color;
+      font-size: 24px;
+    }
+  }
 
-      .book-genre {
+  .separator::after {
+    border-bottom: 4px solid colors.$earls-green;
+    content: '';
+    display: block;
+    margin-top: 10px;
+  }
+
+  .book-props {
+    .book-prop {
+      & > .book-prop-description {
         @include colors.secondary-text-color;
-        font-size: 24px;
-      }
-    }
-
-    .separator::after {
-      border-bottom: 4px solid colors.$earls-green;
-      content: '';
-      display: block;
-      margin-top: 10px;
-    }
-
-    .book-props {
-      .book-prop {
-        & > .book-prop-description {
-          @include colors.secondary-text-color;
-        }
       }
     }
   }
@@ -147,30 +136,41 @@ $badge-width-mobile: calc(
     background-size: 100% auto;
   }
   .book-card:not(.book-card-simple) {
+    display: grid;
     justify-content: center;
     margin-top: 0;
+    grid-gap: 30px;
+    grid-template-areas:
+      'book-title book-title'
+      'book-cover book-props';
+    grid-template-columns: minmax(auto, 200px) auto;
 
-    .book-detail {
-      margin: 20px 10px 0;
-      width: 100%;
+    .book-cover {
+      grid-area: book-cover;
+    }
 
-      .book-title {
-        font-size: 24px;
+    .book-title {
+      grid-area: book-title;
+      text-align: center;
 
-        .book-genre {
-          font-size: 16px;
-        }
+      &::after {
+        display: none;
       }
-      .book-props {
-        padding-top: 18px;
 
-        .book-prop {
-          margin-bottom: 18px;
-          font-size: 14px;
+      .book-genre {
+        display: block;
+      }
+    }
+    .book-props {
+      align-self: center;
+      grid-area: book-props;
 
-          .book-prop-description {
-            font-size: 14px;
-          }
+      .book-prop {
+        margin-bottom: 18px;
+        font-size: 20px;
+
+        .book-prop-description {
+          font-size: inherit;
         }
       }
     }
