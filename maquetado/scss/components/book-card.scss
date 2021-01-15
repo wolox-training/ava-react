@@ -88,6 +88,7 @@ $badge-width-mobile: calc(
         .book-prop-name {
           display: none;
         }
+
         .book-prop-description {
           font-size: 14px;
         }
@@ -135,6 +136,7 @@ $badge-width-mobile: calc(
     width: $badge-width-mobile;
     background-size: 100% auto;
   }
+
   .book-card:not(.book-card-simple) {
     display: grid;
     justify-content: center;
