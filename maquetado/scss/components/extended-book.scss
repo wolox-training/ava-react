@@ -17,3 +17,17 @@
     }
   }
 }
+
+@media (max-width: sizes.$breakpoint-phone) {
+  .extended-book-page {
+    grid-template-areas:
+      'book-card'
+      'aside';
+    grid-template-rows: auto;
+
+    .aside {
+      justify-self: center;
+      justify-content: center;
+    }
+  }
+}
