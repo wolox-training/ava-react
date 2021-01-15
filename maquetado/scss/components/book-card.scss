@@ -60,6 +60,11 @@ $badge-width-mobile: calc(
   &.book-card-simple {
     width: 200px;
     padding: 30px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.075);
+    }
 
     & > .badge::after {
       display: none;
