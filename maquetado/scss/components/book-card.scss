@@ -26,12 +26,13 @@ $badge-width-mobile: calc(
   box-shadow: 4px 4px 10px 0 colors.$border-color;
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
+  grid-area: book-card;
+  width: 100%;
 
   &:not(.book-card-simple) {
     margin-top: 75px;
     padding: 25px;
-    width: 900px;
+    max-width: 900px;
 
     .book-cover {
       width: 260px;
@@ -58,7 +59,7 @@ $badge-width-mobile: calc(
   }
   // Simple version
   &.book-card-simple {
-    width: 200px;
+    max-width: 200px;
     padding: 30px;
     transition: transform 0.3s;
 
