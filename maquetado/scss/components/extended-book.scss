@@ -1,0 +1,14 @@
+@use '../sizes' as sizes;
+
+@media (max-width: sizes.$breakpoint-mobile) {
+  .extended-book-page {
+    justify-content: center;
+    padding: 20px;
+
+    .aside {
+      width: 100%;
+      order: 2;
+      justify-content: center;
+    }
+  }
+}
