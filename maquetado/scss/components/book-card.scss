@@ -45,13 +45,10 @@ $badge-width-mobile: calc(
     }
     .book-props {
       padding-top: 30px;
+      font-size: 20px;
 
       .book-prop {
-        font-size: 20px;
         margin-bottom: 30px;
-        .book-prop-description {
-          font-size: 20px;
-        }
       }
     }
   }
@@ -100,8 +97,9 @@ $badge-width-mobile: calc(
 
   .book-cover {
     grid-area: book-cover;
-    max-width: 100%;
+    max-width: 260px;
     position: relative;
+    width: 100%;
 
     .book-cover-image {
       width: 100%;
@@ -116,6 +114,7 @@ $badge-width-mobile: calc(
     .book-genre {
       @include colors.secondary-text-color;
       font-size: 24px;
+      grid-area: book-genre;
     }
   }
 
@@ -130,7 +129,10 @@ $badge-width-mobile: calc(
     grid-area: book-props;
 
     .book-prop {
+      font-size: inherit;
+
       & > .book-prop-description {
+        font-size: inherit;
         @include colors.secondary-text-color;
       }
     }
@@ -152,12 +154,12 @@ $badge-width-mobile: calc(
       'book-cover book-props';
     grid-template-columns: minmax(auto, 200px) auto;
 
+    .separator::after {
+      display: none;
+    }
+
     .book-title {
       text-align: center;
-
-      &::after {
-        display: none;
-      }
 
       .book-genre {
         display: block;
@@ -166,15 +168,46 @@ $badge-width-mobile: calc(
 
     .book-props {
       align-self: center;
+      font-size: 20px;
 
       .book-prop {
         margin-bottom: 18px;
-        font-size: 20px;
-
-        .book-prop-description {
-          font-size: inherit;
-        }
       }
+    }
+  }
+}
+
+@media (max-width: sizes.$breakpoint-phone) {
+  .book-card:not(.book-card-simple) {
+    grid-gap: 0;
+    grid-template-areas:
+      'book-title'
+      'book-genre'
+      'book-cover'
+      'book-props';
+    grid-template-columns: minmax(auto, 600px);
+    padding: 16px;
+
+    .book-cover {
+      justify-self: center;
+      margin: 20px 0;
+    }
+
+    .separator::after {
+      display: block;
+    }
+
+    .book-title {
+      font-size: 24px;
+
+      .book-genre {
+        font-size: 16px;
+      }
+    }
+
+    .book-props {
+      padding-top: 18px;
+      font-size: 14px;
     }
   }
 }
