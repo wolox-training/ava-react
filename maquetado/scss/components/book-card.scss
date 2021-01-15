@@ -147,6 +147,26 @@ $badge-width-mobile: calc(
     .book-detail {
       margin: 20px 10px 0;
       width: 100%;
+
+      .book-title {
+        font-size: 24px;
+
+        .book-genre {
+          font-size: 16px;
+        }
+      }
+      .book-props {
+        padding-top: 18px;
+
+        .book-prop {
+          margin-bottom: 18px;
+          font-size: 14px;
+
+          .book-prop-description {
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }
