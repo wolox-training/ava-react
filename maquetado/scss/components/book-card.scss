@@ -140,7 +140,7 @@ $badge-width-mobile: calc(
   }
 }
 
-@media (max-width: sizes.$breakpoint-mobile) {
+@media (max-width: sizes.$breakpoint-tablet) {
   .badge::after {
     width: $badge-width-mobile;
     background-size: 100% auto;

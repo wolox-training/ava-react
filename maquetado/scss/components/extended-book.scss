@@ -1,6 +1,6 @@
 @use '../sizes' as sizes;
 
-@media (max-width: sizes.$breakpoint-mobile) {
+@media (max-width: sizes.$breakpoint-tablet) {
   .extended-book-page {
     justify-content: center;
     padding: 20px;

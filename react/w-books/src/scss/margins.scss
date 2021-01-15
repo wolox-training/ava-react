@@ -1,11 +1,11 @@
 /* stylelint-disable selector-class-pattern  */
-$breakpoint-mobile: 768px;
+$breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
 
 $bt-scale: null;
 $bd-scale: null;
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: $breakpoint-tablet) {
   $bt-scale: 5;
 }
 
