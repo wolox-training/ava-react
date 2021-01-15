@@ -1,0 +1,6 @@
+@use 'colors' as colors;
+
+* {
+  @include colors.primary-text-color;
+  font-family: 'Roboto', serif;
+}

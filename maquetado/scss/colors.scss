@@ -1,0 +1,11 @@
+$primary-text-color: #000;
+$secondary-text-color: #828282;
+$earls-green: #bed23c;
+
+@mixin primary-text-color {
+  color: $primary-text-color;
+}
+
+@mixin secondary-text-color {
+  color: $secondary-text-color;
+}
