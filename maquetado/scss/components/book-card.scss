@@ -130,7 +130,7 @@
   }
 }
 
-@media (max-width: sizes.$breakpoint-tablet) {
+@media (max-width: sizes.$breakpoint-mobile) {
   .book-card:not(.book-card-simple) {
     justify-content: center;
 
