@@ -6,14 +6,20 @@
 
 @import 'components';
 
-// TODO: Edit this global styles
+@import 'colors';
+
+@import 'fonts';
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, 'Droid Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: Roboto, serif;
+  color: $primary-text-color;
 }
 
 code {
