@@ -1,0 +1,23 @@
+@import '../../../scss/colors';
+
+.sign-up-layout {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+
+  .sign-up-container {
+    background-color: $wild-sand;
+    border-top: 6px solid $cerulean;
+    display: grid;
+    font-size: 16px;
+    max-width: 100%;
+    padding: 25px;
+    width: 300px;
+
+    .wolox-logo {
+      justify-self: center;
+      width: 210px;
+    }
+  }
+}
