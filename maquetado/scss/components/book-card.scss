@@ -39,8 +39,8 @@ $badge-width-mobile: calc(
     display: grid;
     grid-gap: 0 35px;
     grid-template-areas:
-      'book-cover book-title book-genre'
-      'book-cover book-props book-props';
+      'book-cover book-title'
+      'book-cover book-props';
     grid-auto-columns: 260px auto;
     grid-template-rows: 70px auto;
     margin-top: 75px;
@@ -53,6 +53,10 @@ $badge-width-mobile: calc(
       &::after {
         @include separator;
       }
+    }
+
+    .book-genre-mobile{
+      display: none;
     }
 
     .book-props {
@@ -126,7 +130,13 @@ $badge-width-mobile: calc(
   .book-genre {
     @include colors.secondary-text-color;
     font-size: 24px;
-    grid-area: book-genre;
+    
+    &.book-genre-mobile{
+      grid-area: book-genre-mobile;
+    }
+    &.book-genre-desktop{
+      grid-area: book-genre-desktop;
+    }
   }
 
   .book-props {
@@ -154,7 +164,7 @@ $badge-width-mobile: calc(
     margin-top: 0;
     grid-template-areas:
       'book-title book-title'
-      'book-genre book-genre'
+      'book-genre-mobile book-genre-mobile'
       'book-cover book-props';
     grid-template-columns: minmax(auto, 200px) auto;
     grid-template-rows: 40px 40px auto;
@@ -170,6 +180,9 @@ $badge-width-mobile: calc(
     .book-genre {
       text-align: center;
       display: block;
+      &.book-genre-desktop{
+        display: none;
+      }
     }
 
     .book-props {
@@ -189,7 +202,7 @@ $badge-width-mobile: calc(
     grid-template-areas:
       'book-title'
       'book-cover'
-      'book-genre'
+      'book-genre-mobile'
       'book-props';
     grid-template-columns: minmax(auto, 600px);
     grid-template-rows: auto;
