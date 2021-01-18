@@ -1,6 +1,7 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 import Input, { InputProps } from '../Input';
+
 import styles from './styles.module.scss';
 
 interface FormRowProps {
@@ -11,11 +12,11 @@ interface FormRowProps {
 
 function FormRow({ labelName, className, inputProps }: FormRowProps): JSX.Element {
   return (
-    <div className={`${styles["form-row"]} ${className}`}>
-      <label htmlFor="" className={styles["form-row-label"]}>
+    <div className={`${styles['form-row']} ${className}`}>
+      <label htmlFor="" className={styles['form-row-label']}>
         {labelName}
       </label>
-      <Input className={styles["form-row-input"]} {...inputProps} />
+      <Input className={styles['form-row-input']} {...inputProps} />
     </div>
   );
 }

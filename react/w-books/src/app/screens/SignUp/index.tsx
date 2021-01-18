@@ -1,10 +1,10 @@
 import React from 'react';
 
-import styles from './styles.module.scss';
-
-import LogoWolox from '~components/LogoWolox';
+import LogoWolox from '../../components/LogoWolox';
 import Button from '../../components/Button';
+
 import SignUpForm from './components/SignUpForm';
+import styles from './styles.module.scss';
 
 export default function SignUp() {
   return (
@@ -15,5 +15,5 @@ export default function SignUp() {
         <Button>Login</Button>
       </main>
     </div>
-  )
+  );
 }

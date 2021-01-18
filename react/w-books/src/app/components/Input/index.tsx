@@ -10,7 +10,7 @@ export interface InputProps {
 }
 
 function Input({ className, id, type, handleChange }: InputProps): JSX.Element {
-  return <input type={type} id={id} className={`${styles.input} ${className}`} onChange={handleChange}/>;
+  return <input type={type} id={id} className={`${styles.input} ${className}`} onChange={handleChange} />;
 }
 
 export default Input;
