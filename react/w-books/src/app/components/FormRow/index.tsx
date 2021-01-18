@@ -5,11 +5,12 @@ import styles from './styles.module.scss';
 
 interface FormRowProps {
   labelName: string;
+  className?: string;
 }
 
-function FormRow({ labelName }: FormRowProps): JSX.Element {
+function FormRow({ labelName, className }: FormRowProps): JSX.Element {
   return (
-    <div className={styles["form-row"]}>
+    <div className={`${styles["form-row"]} ${className}`}>
       <label htmlFor="" className={styles["form-row-label"]}>
         {labelName}
       </label>
