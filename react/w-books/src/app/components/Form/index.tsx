@@ -6,23 +6,18 @@ interface FormProps {
   className?: string;
 }
 
-export default class Form extends Component<FormProps> {
-  handleFormSubmit = (event: React.FormEvent) => {
+export default function Form({ handleSubmit, className, children }: FormProps) {
+  const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const { handleSubmit } = this.props;
 
     if (handleSubmit) {
       handleSubmit(event);
     }
   };
-
-  render() {
-    const { className, children } = this.props;
-
-    return (
-      <form onSubmit={this.handleFormSubmit} className={className}>
-        {children}
-      </form>
-    );
-  }
+  
+  return (
+    <form onSubmit={handleFormSubmit} className={className}>
+      {children}
+    </form>
+  );
 }
