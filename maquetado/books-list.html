@@ -10,8 +10,16 @@
   </head>
 
   <body>
+    <nav class="nav">
+      <img
+        src="./img/logo-wolox.png"
+        alt="The logo of Wolox"
+        class="nav-logo"
+      />
+      <a href="/login.html" class="nav-option">Logout</a>
+    </nav>
     <section class="books-list">
-      <article class="book-card book-card-simple">
+      <a class="book-card book-card-simple" href="/">
         <div class="book-cover badge">
           <img
             src="./img/book-cover.png"
@@ -42,13 +50,13 @@
             </div>
           </div>
         </div>
-      </article>
+      </a>
     </section>
 
     <!-- Test script -->
     <script>
       (() => {
-        const cantItems = 7;
+        const cantItems = 20;
         const bookHtml = document.querySelector('.books-list').innerHTML;
         for (let i = 0; i < cantItems; i++) {
           document.querySelector('.books-list').innerHTML += bookHtml;

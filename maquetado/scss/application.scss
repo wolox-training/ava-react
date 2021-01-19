@@ -1,5 +1,9 @@
 @use 'equalizer';
 @use 'fonts';
 @use 'styles';
-@use 'detail';
-@use 'books-list';
+@use 'components/layout';
+@use 'components/navbar';
+@use 'components/aside';
+@use 'components/books-list';
+@use 'components/book-card';
+@use 'components/login';

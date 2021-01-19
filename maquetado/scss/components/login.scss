@@ -1,0 +1,57 @@
+@use '../colors' as colors;
+
+.login-container {
+  background-color: colors.$wild-sand;
+  border-top: 6px solid colors.$cerulean;
+  display: grid;
+  font-size: 16px;
+  max-width: 100%;
+  padding: 25px;
+  width: 300px;
+
+  .wolox-logo {
+    justify-self: center;
+    width: 210px;
+  }
+
+  .input {
+    border-radius: 5px;
+    height: 30px;
+    max-width: 100%;
+    width: 250px;
+  }
+
+  .login-form {
+    &::after {
+      content: '';
+      display: block;
+      border-bottom: 2px solid colors.$silver-chalice;
+      margin: 15px 0;
+    }
+
+    .login-form-submit {
+      @extend .input;
+      margin-top: 25px;
+      background-color: colors.$earls-green;
+      color: colors.$white;
+    }
+
+    .login-form-row {
+      .login-form-label {
+        margin: 15px 0 10px 0;
+      }
+
+      .login-form-input {
+        @extend .input;
+        display: block;
+        padding: 0 10px;
+      }
+    }
+  }
+
+  .sign-up-button {
+    @extend .input;
+    border: 1px solid colors.$earls-green;
+    color: colors.$earls-green;
+  }
+}

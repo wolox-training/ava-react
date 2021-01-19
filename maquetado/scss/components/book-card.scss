@@ -1,5 +1,5 @@
-@use 'colors' as colors;
-@use 'sizes' as sizes;
+@use '../colors' as colors;
+@use '../sizes' as sizes;
 
 .badge::after {
   background: url('../img/badge.png');
@@ -24,11 +24,14 @@
   max-width: 100%;
 
   &:not(.book-card-simple) {
+    margin-top: 75px;
     padding: 25px;
     width: 900px;
+
     .book-cover {
       width: 260px;
     }
+
     .book-detail {
       margin-left: 50px;
 
