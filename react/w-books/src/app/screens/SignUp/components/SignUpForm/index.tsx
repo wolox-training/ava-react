@@ -5,6 +5,7 @@ import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
 
 import styles from './styles.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface UserData {
   email?: string;
@@ -17,6 +18,7 @@ interface UserData {
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState<UserData | null>(null);
+  const { t } = useTranslation();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event?.target?.id) {
@@ -39,7 +41,7 @@ export default function SignUpForm() {
   return (
     <Form className={styles['sign-up-form']} handleSubmit={signUp}>
       <FormRow
-        labelName="Nombre"
+        labelName={t('UserFormFirstName')}
         className={styles['form-row']}
         inputProps={{
           id: 'first_name',
@@ -48,7 +50,7 @@ export default function SignUpForm() {
         }}
       />
       <FormRow
-        labelName="Apellido"
+        labelName={t('UserFormLastName')}
         className={styles['form-row']}
         inputProps={{
           id: 'last_name',
@@ -57,7 +59,7 @@ export default function SignUpForm() {
         }}
       />
       <FormRow
-        labelName="Email"
+        labelName={t('UserFormEmail')}
         className={styles['form-row']}
         inputProps={{
           id: 'email',
@@ -66,7 +68,7 @@ export default function SignUpForm() {
         }}
       />
       <FormRow
-        labelName="Password"
+        labelName={t('UserFormPassword')}
         className={styles['form-row']}
         inputProps={{
           id: 'password',
@@ -75,7 +77,7 @@ export default function SignUpForm() {
         }}
       />
       <FormRow
-        labelName="Confirmación de Password"
+        labelName={t('UserFormConfirmPassword')}
         className={styles['form-row']}
         inputProps={{
           id: 'password_confirmation',
@@ -84,7 +86,7 @@ export default function SignUpForm() {
         }}
       />
 
-      <Button isFilled isSubmit>Sign Up</Button>
+      <Button isFilled isSubmit>{t('SignUpButton')}</Button>
     </Form>
   );
 }

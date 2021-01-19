@@ -8,12 +8,24 @@ function requireAll(requireContext: __WebpackModuleApi.RequireContext) {
 const resources = {
   en: {
     translation: {
-      "LoginButtonText": "Login"
+      "LoginButton": "Login",
+      "SignUpButton": "Sign Up",
+      "UserFormFirstName":"Name",
+      "UserFormLastName":"Last Name",
+      "UserFormEmail":"Email",
+      "UserFormPassword":"Password",
+      "UserFormConfirmPassword":"Confirm Password",
     }
   },
   es: {
     translation: {
-      "LoginButtonText": "Ingresá"
+      "LoginButton": "Ingresá",
+      "SignUpButton": "Registrate",
+      "UserFormFirstName":"Nombre",
+      "UserFormLastName":"Apellido",
+      "UserFormEmail":"Email",
+      "UserFormPassword":"Contraseña",
+      "UserFormConfirmPassword":"Confirmacion de contraseña",
     }
   }
 };

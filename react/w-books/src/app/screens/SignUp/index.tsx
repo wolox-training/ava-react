@@ -15,7 +15,7 @@ export default function SignUp() {
       <main className={styles['sign-up-container']}>
         <LogoWolox className={styles['wolox-logo']} />
         <SignUpForm />
-        <Button>{t('LoginButtonText')}</Button>
+        <Button>{t('LoginButton')}</Button>
       </main>
     </div>
   );
