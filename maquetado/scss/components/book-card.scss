@@ -1,5 +1,10 @@
 @use '../colors' as colors;
 @use '../sizes' as sizes;
+$badge-width-desktop: 95px;
+$badge-width-mobile: calc(
+  #{$badge-width-desktop} - (#{$badge-width-desktop} * 30 / 100)
+);
+// $badge-width-mobile: $badge-width-desktop * 70 / 100;
 
 .badge::after {
   background: url('../img/badge.png');
@@ -13,7 +18,7 @@
   right: -20px;
   transform: rotate(15deg);
   top: -15px;
-  width: 95px;
+  width: $badge-width-desktop;
 }
 
 .book-card {
@@ -55,6 +60,11 @@
   &.book-card-simple {
     width: 200px;
     padding: 30px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.075);
+    }
 
     & > .badge::after {
       display: none;
@@ -130,12 +140,38 @@
   }
 }
 
-@media (max-width: sizes.$breakpoint-tablet) {
+@media (max-width: sizes.$breakpoint-mobile) {
+  .badge::after {
+    width: $badge-width-mobile;
+    background-size: 100% auto;
+  }
   .book-card:not(.book-card-simple) {
     justify-content: center;
+    margin-top: 0;
 
     .book-detail {
-      margin: 0 10px;
+      margin: 20px 10px 0;
+      width: 100%;
+
+      .book-title {
+        font-size: 24px;
+
+        .book-genre {
+          font-size: 16px;
+        }
+      }
+      .book-props {
+        padding-top: 18px;
+
+        .book-prop {
+          margin-bottom: 18px;
+          font-size: 14px;
+
+          .book-prop-description {
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 }
