@@ -3,8 +3,7 @@
 .button {
   border-radius: 5px;
   height: 30px;
-  max-width: 250px;
-  width: 100%;
+  padding: 0 5px;
 
   &.filled {
     background-color: $earls-green;
@@ -14,5 +13,10 @@
   &:not(.filled) {
     border: 1px solid $earls-green;
     color: $earls-green;
+  }
+
+  &:not(.auto-width){
+    max-width: 250px;
+    width: 100%;
   }
 }

@@ -8,18 +8,22 @@ interface ButtonProps {
   className?: string;
   isFilled?: boolean;
   isSubmit?: boolean;
+  isWidthAuto?: boolean;
+  handleClick?: () => void;
 }
 
-export default function Button({ children, isSubmit, className, isFilled }: ButtonProps) {
+export default function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick }: ButtonProps) {
 
   return (
     <button
       type={isSubmit ? 'submit' : 'button'}
+      onClick={handleClick}
       className={clsx(
         styles.button,
         className && className,
         {
-          [styles.filled]: isFilled
+          [styles.filled]: isFilled,
+          [styles.autoWidth]: isWidthAuto
         }
       )}>
       {children}
