@@ -8,7 +8,7 @@ export default function Routes() {
       <BrowserRouter>
         <Switch>
           {
-            ROUTES.map(route => <Route component={route.component} path={route.path} exact={route.exact} />)
+            ROUTES.map(route => <Route key={route.path} component={route.component} path={route.path} exact={route.exact} />)
           }
         </Switch>
       </BrowserRouter>
