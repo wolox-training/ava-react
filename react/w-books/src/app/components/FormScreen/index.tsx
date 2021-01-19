@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import ButtonLanguage from '~components/ButtonLanguage';
 
 import LogoWolox from '../LogoWolox';
 
@@ -10,11 +11,12 @@ interface FormScreenProps {
 
 export default function FormScreen({ children }: FormScreenProps) {
   return (
-    <div className={styles['form-screen-layout']}>
-      <main className={styles['form-container']}>
-        <LogoWolox className={styles['wolox-logo']} />
+    <div className={styles.formScreenLayout}>
+      <main className={styles.formContainer}>
+        <LogoWolox className={styles.woloxLogo} />
         {children}
       </main>
+      <ButtonLanguage className={styles.languagesContainer}/>
     </div>
   )
 }
