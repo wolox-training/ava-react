@@ -43,47 +43,37 @@ export default function SignUpForm() {
       <FormRow
         labelName={t('UserFormFirstName')}
         className={styles.formRow}
-        inputProps={{
-          id: 'first_name',
-          handleChange: handleInputChange,
-          type: 'text'
-        }}
+        inputId="first_name"
+        inputType="text"
+        handleInputChange={handleInputChange}
       />
       <FormRow
         labelName={t('UserFormLastName')}
         className={styles.formRow}
-        inputProps={{
-          id: 'last_name',
-          handleChange: handleInputChange,
-          type: 'text'
-        }}
+        inputId="last_name"
+        inputType="text"
+        handleInputChange={handleInputChange}
       />
       <FormRow
         labelName={t('UserFormEmail')}
         className={styles.formRow}
-        inputProps={{
-          id: 'email',
-          handleChange: handleInputChange,
-          type: 'email'
-        }}
+        inputId="email"
+        inputType="email"
+        handleInputChange={handleInputChange}
       />
       <FormRow
         labelName={t('UserFormPassword')}
         className={styles.formRow}
-        inputProps={{
-          id: 'password',
-          handleChange: handleInputChange,
-          type: 'password'
-        }}
+        inputId="password"
+        inputType="password"
+        handleInputChange={handleInputChange}
       />
       <FormRow
         labelName={t('UserFormConfirmPassword')}
         className={styles.formRow}
-        inputProps={{
-          id: 'password_confirmation',
-          handleChange: handleInputChange,
-          type: 'password'
-        }}
+        inputId="password_confirmation"
+        inputType="password"
+        handleInputChange={handleInputChange}
       />
 
       <Button isFilled isSubmit>{t('SignUpButton')}</Button>
