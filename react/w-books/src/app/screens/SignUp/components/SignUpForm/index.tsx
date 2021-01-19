@@ -39,10 +39,10 @@ export default function SignUpForm() {
   }
 
   return (
-    <Form className={styles['sign-up-form']} handleSubmit={signUp}>
+    <Form className={styles.signUpForm} handleSubmit={signUp}>
       <FormRow
         labelName={t('UserFormFirstName')}
-        className={styles['form-row']}
+        className={styles.formRow}
         inputProps={{
           id: 'first_name',
           handleChange: handleInputChange,
@@ -51,7 +51,7 @@ export default function SignUpForm() {
       />
       <FormRow
         labelName={t('UserFormLastName')}
-        className={styles['form-row']}
+        className={styles.formRow}
         inputProps={{
           id: 'last_name',
           handleChange: handleInputChange,
@@ -60,7 +60,7 @@ export default function SignUpForm() {
       />
       <FormRow
         labelName={t('UserFormEmail')}
-        className={styles['form-row']}
+        className={styles.formRow}
         inputProps={{
           id: 'email',
           handleChange: handleInputChange,
@@ -69,7 +69,7 @@ export default function SignUpForm() {
       />
       <FormRow
         labelName={t('UserFormPassword')}
-        className={styles['form-row']}
+        className={styles.formRow}
         inputProps={{
           id: 'password',
           handleChange: handleInputChange,
@@ -78,7 +78,7 @@ export default function SignUpForm() {
       />
       <FormRow
         labelName={t('UserFormConfirmPassword')}
-        className={styles['form-row']}
+        className={styles.formRow}
         inputProps={{
           id: 'password_confirmation',
           handleChange: handleInputChange,

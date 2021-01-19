@@ -12,11 +12,11 @@ interface FormRowProps {
 
 function FormRow({ labelName, className, inputProps }: FormRowProps): JSX.Element {
   return (
-    <div className={`${styles['form-row']} ${className}`}>
-      <label htmlFor="" className={styles['form-row-label']}>
+    <div className={`${styles.formRow} ${className}`}>
+      <label htmlFor="" className={styles.formRowLabel}>
         {labelName}
       </label>
-      <Input className={styles['form-row-input']} {...inputProps} />
+      <Input className={styles.formRowInput} {...inputProps} />
     </div>
   );
 }

@@ -11,9 +11,9 @@ export default function SignUp() {
   const { t } = useTranslation();
 
   return (
-    <div className={styles['sign-up-layout']}>
-      <main className={styles['sign-up-container']}>
-        <LogoWolox className={styles['wolox-logo']} />
+    <div className={styles.signUpLayout}>
+      <main className={styles.signUpContainer}>
+        <LogoWolox className={styles.woloxLogo} />
         <SignUpForm />
         <Button>{t('LoginButton')}</Button>
       </main>
