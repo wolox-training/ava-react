@@ -1,10 +1,27 @@
 import i18next from 'i18next';
+import { initReactI18next } from "react-i18next";
 
 function requireAll(requireContext: __WebpackModuleApi.RequireContext) {
   return requireContext.keys().map(requireContext);
 }
 
-i18next.init({
+const resources = {
+  en: {
+    translation: {
+      "LoginButtonText": "Login"
+    }
+  },
+  es: {
+    translation: {
+      "LoginButtonText": "Ingresá"
+    }
+  }
+};
+
+i18next
+.use(initReactI18next)
+.init({
+  resources,
   lng: 'es',
   initImmediate: false
 });
