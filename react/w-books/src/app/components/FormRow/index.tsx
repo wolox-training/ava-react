@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 import Input, { InputProps } from '../Input';
@@ -12,7 +13,8 @@ interface FormRowProps {
 
 function FormRow({ labelName, className, inputProps }: FormRowProps): JSX.Element {
   return (
-    <div className={`${styles.formRow} ${className}`}>
+    <div className={
+      clsx(styles.formRow, className && className)}>
       <label htmlFor="" className={styles.formRowLabel}>
         {labelName}
       </label>
