@@ -32,6 +32,7 @@ export default function ButtonLanguage({ className }: ButtonLanguageProps) {
             className={styles.buttonLanguage}
             isFilled={lang === selectedLanguage}
             isWidthAuto
+            key={lang}
             handleClick={() => setSelectedLanguage(lang)}
           >
             {LANGS[lang].translation.LanguageName}
