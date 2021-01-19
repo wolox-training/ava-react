@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function Login() {
+import FormScreen from '../../components/FormScreen';
+import Button from '../../components/Button';
+
+import LoginForm from './components/LoginForm';
+
+export default function index() {
   return (
-    <div>
-      Login
-    </div>
+    <FormScreen>
+      <LoginForm />
+      <Button>Sign Up</Button>
+    </FormScreen>
   )
 }

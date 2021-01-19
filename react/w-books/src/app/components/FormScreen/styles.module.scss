@@ -1,12 +1,12 @@
 @import '../../../scss/colors';
 
-.sign-up-layout {
+.form-screen-layout {
   align-items: center;
   display: flex;
   justify-content: center;
   min-height: 100vh;
 
-  .sign-up-container {
+  .form-container {
     background-color: $wild-sand;
     border-top: 6px solid $cerulean;
     display: grid;
