@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML & CSS Training</title>
+    <meta name="description" content="training" />
+    <meta name="author" content="Wolox" />
+    <link rel="stylesheet" type="text/css" href="css/application.css" />
+  </head>
+
+  <body>
+    <nav class="nav">
+      <img
+        src="./img/logo-wolox.png"
+        alt="The logo of Wolox"
+        class="nav-logo"
+      />
+      <a href="/login.html" class="nav-option">Logout</a>
+    </nav>
+    <section class="books-list">
+      <a class="book-card book-card-simple" href="/">
+        <div class="book-cover badge">
+          <img
+            src="./img/book-cover.png"
+            alt="The image of Books title"
+            class="book-cover-image"
+          />
+        </div>
+        <div class="book-detail">
+          <h3 class="book-title separator">
+            Título del libro
+            <span class="book-genre">(género)</span>
+          </h3>
+
+          <div class="book-props">
+            <div class="book-prop keep-visible-simple">
+              <b class="book-prop-name">Autor del libro:</b>
+              <span class="book-prop-description">
+                Nombre del autor del libro</span
+              >
+            </div>
+            <div class="book-prop">
+              <b class="book-prop-name">Editorial:</b>
+              <span class="book-prop-description"> Nombre de la editorial</span>
+            </div>
+            <div class="book-prop">
+              <b class="book-prop-name">Año de publicacion: </b>
+              <span class="book-prop-description"> Año de publicacion</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Test script -->
+    <script>
+      (() => {
+        const cantItems = 20;
+        const bookHtml = document.querySelector('.books-list').innerHTML;
+        for (let i = 0; i < cantItems; i++) {
+          document.querySelector('.books-list').innerHTML += bookHtml;
+        }
+      })();
+    </script>
+  </body>
+</html>

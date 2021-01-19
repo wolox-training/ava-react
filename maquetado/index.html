@@ -9,7 +9,10 @@
     <link rel="stylesheet" type="text/css" href="css/application.css" />
   </head>
 
-  <body>
+  <body class="layout">
+    <aside class="aside">
+      <a href="/books-list.html" class="button-back">Atrás</a>
+    </aside>
     <article class="book-card">
       <div class="book-cover badge">
         <img
@@ -25,18 +28,18 @@
         </h3>
 
         <div class="book-props">
-          <div class="book-prop">
-            <b>Autor del libro:</b>
+          <div class="book-prop keep-visible-simple">
+            <b class="book-prop-name">Autor del libro:</b>
             <span class="book-prop-description">
               Nombre del autor del libro</span
             >
           </div>
           <div class="book-prop">
-            <b>Editorial:</b>
+            <b class="book-prop-name">Editorial:</b>
             <span class="book-prop-description"> Nombre de la editorial</span>
           </div>
           <div class="book-prop">
-            <b>Año de publicacion: </b>
+            <b class="book-prop-name">Año de publicacion: </b>
             <span class="book-prop-description"> Año de publicacion</span>
           </div>
         </div>
