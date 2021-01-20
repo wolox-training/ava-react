@@ -6,6 +6,7 @@ import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
 
 import styles from './styles.module.scss';
+import { useForm } from 'react-hook-form';
 
 interface UserData {
   email?: string;
@@ -13,42 +14,42 @@ interface UserData {
 }
 
 export default function LoginForm() {
-  const [formData, setFormData] = useState<UserData | null>(null);
   const { t } = useTranslation();
+  const { errors, register, handleSubmit } = useForm<UserData>();
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event?.target?.id) {
-      event.persist();
-
-      setFormData((actualFormData: UserData | null) =>
-        ({ ...actualFormData, [event.target.id]: event.target.value })
-      );
-    }
-  }
-
-  const login = () => {
+  const login = (formData: UserData) => {
     if (formData) {
-      const data = { ...formData };
+      const data = { ...formData, locale: navigator.language };
 
       console.log(data);
     }
   }
 
   return (
-    <Form className={styles.loginForm} handleSubmit={login}>
+    <Form className={styles.loginForm} handleSubmit={handleSubmit(login)}>
       <FormRow
         labelName={t('LoginForm:UserFormEmail')}
         className={styles.formRow}
         inputId="email"
         inputType="email"
-        handleInputChange={handleInputChange}
+        inputRef={
+          register({
+            required: t('FormValidation:Required'),
+          })
+        }
+        errorMessage={errors.email?.message}
       />
       <FormRow
         labelName={t('LoginForm:UserFormPassword')}
         className={styles.formRow}
         inputId="password"
         inputType="password"
-        handleInputChange={handleInputChange}
+        inputRef={
+          register({
+            required: t('FormValidation:Required'),
+          })
+        }
+        errorMessage={errors.password?.message}
       />
 
       <Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
