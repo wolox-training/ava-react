@@ -17,7 +17,7 @@ export default function Button({ children, isSubmit, className, isFilled }: Butt
       type={isSubmit ? 'submit' : 'button'}
       className={clsx(
         styles.button,
-        className && className,
+        className,
         {
           [styles.filled]: isFilled
         }
