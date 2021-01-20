@@ -13,7 +13,7 @@ export default function SignUp() {
   return (
     <FormScreen>
       <SignUpForm />
-      <Button>{t('LoginButton')}</Button>
+      <Button>{t('Common:LoginButton')}</Button>
     </FormScreen>
   );
 }

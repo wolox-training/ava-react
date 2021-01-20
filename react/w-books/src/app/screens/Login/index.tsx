@@ -12,7 +12,7 @@ export default function index() {
   return (
     <FormScreen>
       <LoginForm />
-      <Button>{t('SignUpButton')}</Button>
+      <Button>{t('Common:SignUpButton')}</Button>
     </FormScreen>
   );
 }

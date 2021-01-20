@@ -37,21 +37,21 @@ export default function LoginForm() {
   return (
     <Form className={styles.loginForm} handleSubmit={login}>
       <FormRow
-        labelName={t('UserFormEmail')}
+        labelName={t('LoginForm:UserFormEmail')}
         className={styles.formRow}
         inputId="email"
         inputType="email"
         handleInputChange={handleInputChange}
       />
       <FormRow
-        labelName={t('UserFormPassword')}
+        labelName={t('LoginForm:UserFormPassword')}
         className={styles.formRow}
         inputId="password"
         inputType="password"
         handleInputChange={handleInputChange}
       />
 
-      <Button isFilled isSubmit>{t('LoginButton')}</Button>
+      <Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
     </Form>
   );
 }
