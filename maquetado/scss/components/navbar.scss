@@ -1,4 +1,5 @@
 @use '../colors' as colors;
+@use '../animations' as animations;
 
 .nav {
   align-items: center;
@@ -21,6 +22,7 @@
 
   .nav-logo {
     height: 100%;
+    @include animations.zoom-out-animation;
   }
 
   .nav-option {

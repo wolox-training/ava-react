@@ -4,7 +4,6 @@ $badge-width-desktop: 95px;
 $badge-width-mobile: calc(
   #{$badge-width-desktop} - (#{$badge-width-desktop} * 30 / 100)
 );
-// $badge-width-mobile: $badge-width-desktop * 70 / 100;
 
 .badge::after {
   background: url('../img/badge.png');
@@ -21,44 +20,57 @@ $badge-width-mobile: calc(
   width: $badge-width-desktop;
 }
 
+@mixin separator {
+  border-bottom: 4px solid colors.$earls-green;
+  content: '';
+  display: block;
+  margin-top: 10px;
+}
+
 .book-card {
   background-color: colors.$background-color;
   box-shadow: 4px 4px 10px 0 colors.$border-color;
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
+  grid-area: book-card;
+  width: 100%;
 
   &:not(.book-card-simple) {
+    display: grid;
+    grid-gap: 0 35px;
+    grid-template-areas:
+      'book-cover book-title'
+      'book-cover book-props';
+    grid-auto-columns: 260px auto;
+    grid-template-rows: 70px auto;
     margin-top: 75px;
     padding: 25px;
-    width: 900px;
+    max-width: 900px;
 
-    .book-cover {
-      width: 260px;
+    .book-title {
+      font-size: 32px;
+
+      &::after {
+        @include separator;
+      }
     }
 
-    .book-detail {
-      margin-left: 50px;
+    .book-genre-mobile{
+      display: none;
+    }
 
-      .book-title {
-        font-size: 32px;
-      }
-      .book-props {
-        padding-top: 30px;
+    .book-props {
+      padding-top: 30px;
+      font-size: 20px;
 
-        .book-prop {
-          font-size: 20px;
-          margin-bottom: 30px;
-          .book-prop-description {
-            font-size: 20px;
-          }
-        }
+      .book-prop {
+        margin-bottom: 30px;
       }
     }
   }
   // Simple version
   &.book-card-simple {
-    width: 200px;
+    max-width: 200px;
     padding: 30px;
     transition: transform 0.3s;
 
@@ -74,104 +86,148 @@ $badge-width-mobile: calc(
       width: 140px;
     }
 
-    .book-detail {
-      .book-title {
-        font-size: 16px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
+    .book-title {
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
-      .book-genre,
-      .separator::after,
-      .book-props > .book-prop:not(.keep-visible-simple) {
-        display: none;
-      }
+    .book-genre,
+    .book-props > .book-prop:not(.keep-visible-simple) {
+      display: none;
+    }
 
-      .book-props {
-        .book-prop {
-          .book-prop-name {
-            display: none;
-          }
-          .book-prop-description {
-            font-size: 14px;
-          }
+    .book-props {
+      .book-prop {
+        .book-prop-name {
+          display: none;
+        }
+
+        .book-prop-description {
+          font-size: 14px;
         }
       }
     }
   }
 
   .book-cover {
-    max-width: 100%;
+    grid-area: book-cover;
+    max-width: 260px;
     position: relative;
+    width: 100%;
 
     .book-cover-image {
       width: 100%;
     }
   }
 
-  .book-detail {
-    max-width: 100%;
-    width: 520px;
+  .book-title {
+    font-weight: bold;
+    grid-area: book-title;
+    width: 100%;
+  }
 
-    .book-title {
-      font-weight: bold;
-      width: 100%;
+  .book-genre {
+    @include colors.secondary-text-color;
+    font-size: 24px;
+    
+    &.book-genre-mobile{
+      grid-area: book-genre-mobile;
+    }
+    &.book-genre-desktop{
+      grid-area: book-genre-desktop;
+    }
+  }
 
-      .book-genre {
+  .book-props {
+    grid-area: book-props;
+
+    .book-prop {
+      font-size: inherit;
+
+      & > .book-prop-description {
+        font-size: inherit;
         @include colors.secondary-text-color;
-        font-size: 24px;
-      }
-    }
-
-    .separator::after {
-      border-bottom: 4px solid colors.$earls-green;
-      content: '';
-      display: block;
-      margin-top: 10px;
-    }
-
-    .book-props {
-      .book-prop {
-        & > .book-prop-description {
-          @include colors.secondary-text-color;
-        }
       }
     }
   }
 }
 
-@media (max-width: sizes.$breakpoint-mobile) {
+@media (max-width: sizes.$breakpoint-tablet) {
   .badge::after {
     width: $badge-width-mobile;
     background-size: 100% auto;
   }
+
   .book-card:not(.book-card-simple) {
     justify-content: center;
     margin-top: 0;
+    grid-template-areas:
+      'book-title book-title'
+      'book-genre-mobile book-genre-mobile'
+      'book-cover book-props';
+    grid-template-columns: minmax(auto, 200px) auto;
+    grid-template-rows: 40px 40px auto;
 
-    .book-detail {
-      margin: 20px 10px 0;
-      width: 100%;
+    .book-title {
+      text-align: center;
 
-      .book-title {
-        font-size: 24px;
-
-        .book-genre {
-          font-size: 16px;
-        }
+      &::after {
+        display: none;
       }
-      .book-props {
-        padding-top: 18px;
+    }
 
-        .book-prop {
-          margin-bottom: 18px;
-          font-size: 14px;
-
-          .book-prop-description {
-            font-size: 14px;
-          }
-        }
+    .book-genre {
+      text-align: center;
+      display: block;
+      &.book-genre-desktop{
+        display: none;
       }
+    }
+
+    .book-props {
+      align-self: center;
+      font-size: 20px;
+
+      .book-prop {
+        margin-bottom: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: sizes.$breakpoint-phone) {
+  .book-card:not(.book-card-simple) {
+    grid-gap: 0;
+    grid-template-areas:
+      'book-title'
+      'book-cover'
+      'book-genre-mobile'
+      'book-props';
+    grid-template-columns: minmax(auto, 600px);
+    grid-template-rows: auto;
+    padding: 16px;
+
+    .book-cover {
+      justify-self: center;
+      margin: 20px 0;
+    }
+
+    .book-title {
+      font-size: 24px;
+    }
+
+    .book-genre {
+      font-size: 16px;
+
+      &::after {
+        @include separator;
+      }
+    }
+
+    .book-props {
+      padding-top: 18px;
+      font-size: 14px;
     }
   }
 }
