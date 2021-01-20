@@ -11,7 +11,7 @@ import { UserData } from './types';
 
 export default function SignUpForm() {
   const { t } = useTranslation();
-  const { errors, register, handleSubmit } = useForm<UserData>();
+  const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
   const signUp = (formData: UserData) => {
     if (formData) {
@@ -23,7 +23,6 @@ export default function SignUpForm() {
 
   const getError = (error: FieldError | undefined): string | undefined => {
     if (!error) return;
-    console.log(error);
 
     switch (error.type) {
       case "required": {
@@ -35,7 +34,10 @@ export default function SignUpForm() {
       case "minLength": {
         return t('FormValidationMinLength').replace('{0}', error.message ?? '')
       }
-      default: return ""
+      case "validate": {
+        return t('FormValidationValidate');
+      }
+      default: return t('FormValidationError')
     }
   }
 
@@ -106,7 +108,10 @@ export default function SignUpForm() {
         className={styles.formRow}
         inputId="password_confirmation"
         inputType="password"
-        inputRef={register({ required: true })}
+        inputRef={register({
+          required: true,
+          validate: (value) => value === watch('password')
+        })}
         errorMessage={getError(errors.password_confirmation)}
       />
 
