@@ -10,4 +10,10 @@
   .form-row-input {
     display: block;
   }
+
+  .form-row-error {
+    color: $scarlet;
+    font-size: 13px;
+    padding: 5px 0;
+  }
 }

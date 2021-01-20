@@ -9,6 +9,9 @@ const resources = {
   en: {
     translation: {
       "LoginButton": "Login",
+      "FormValidationRequired": "This field is required",
+      "FormValidationMaxLength": "The maximum characters allowed is {0}",
+      "FormValidationMinLength": "The minimum characters allowed is {0}",
       "SignUpButton": "Sign Up",
       "UserFormFirstName":"Name",
       "UserFormLastName":"Last Name",
@@ -20,6 +23,9 @@ const resources = {
   es: {
     translation: {
       "LoginButton": "Ingresá",
+      "FormValidationRequired": "Este campo es requerido",
+      "FormValidationMaxLength": "El maximo de caracteres permitido es de {0}",
+      "FormValidationMinLength": "El minimo de caracteres permitido es de {0}",
       "SignUpButton": "Registrate",
       "UserFormFirstName":"Nombre",
       "UserFormLastName":"Apellido",

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, Ref } from 'react';
+import { CustomElement, UseFormMethods } from 'react-hook-form';
 
 import styles from './styles.module.scss';
 
@@ -7,14 +8,21 @@ export interface InputProps {
   className?: string;
   id: string;
   type: string;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  register?: 
+  (ref: (HTMLSelectElement & HTMLTextAreaElement & CustomElement<Record<string, any>> & HTMLInputElement) | null) => void
+  | Ref<HTMLInputElement>
 }
 
-function Input({ className, id, type, handleChange }: InputProps): JSX.Element {
+function Input({ className, id, type, handleChange, register }: InputProps): JSX.Element {
   return (
-    <input type={type} id={id} className={
-      clsx(styles.input, className && className)
-    } onChange={handleChange} />
+    <input
+      type={type}
+      name={id}
+      className={clsx(styles.input, className)}
+      onChange={handleChange}
+      ref={register}
+    />
   );
 }
 
