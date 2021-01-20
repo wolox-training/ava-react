@@ -20,7 +20,7 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
       onClick={handleClick}
       className={clsx(
         styles.button,
-        className && className,
+        className,
         {
           [styles.filled]: isFilled,
           [styles.autoWidth]: isWidthAuto

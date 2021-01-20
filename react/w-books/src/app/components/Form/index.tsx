@@ -10,9 +10,7 @@ export default function Form({ handleSubmit, className, children }: FormProps) {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (handleSubmit) {
-      handleSubmit(event);
-    }
+    handleSubmit?.(event);
   };
   
   return (
