@@ -1,0 +1,33 @@
+@use '../sizes' as sizes;
+
+@media (max-width: sizes.$breakpoint-tablet) {
+  .extended-book-page {
+    display: grid;
+    grid-template-areas:
+      'aside'
+      'book-card';
+    grid-template-rows: 10vh 1fr;
+    justify-content: center;
+    padding: 20px;
+
+    .aside {
+      grid-area: aside;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}
+
+@media (max-width: sizes.$breakpoint-phone) {
+  .extended-book-page {
+    grid-template-areas:
+      'book-card'
+      'aside';
+    grid-template-rows: auto;
+
+    .aside {
+      justify-self: center;
+      justify-content: center;
+    }
+  }
+}
