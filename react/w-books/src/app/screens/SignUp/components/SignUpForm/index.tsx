@@ -21,101 +21,81 @@ export default function SignUpForm() {
     }
   }
 
-  const getError = (error: FieldError | undefined): string | undefined => {
-    if (!error) return;
-
-    switch (error.type) {
-      case "required": {
-        return t('FormValidationRequired')
-      }
-      case "maxLength": {
-        return t('FormValidationMaxLength').replace('{0}', error.message ?? '')
-      }
-      case "minLength": {
-        return t('FormValidationMinLength').replace('{0}', error.message ?? '')
-      }
-      case "validate": {
-        return t('FormValidationValidate');
-      }
-      default: return t('FormValidationError')
-    }
-  }
-
   return (
     <Form className={styles.signUpForm} handleSubmit={handleSubmit(signUp)}>
       <FormRow
-        labelName={t('UserFormFirstName')}
+        labelName={t('SignUpForm:UserFormFirstName')}
         className={styles.formRow}
         inputId="first_name"
         inputType="text"
         inputRef={
           register({
-            required: true,
+            required: t('FormValidation:Required'),
             maxLength: {
               value: 30,
-              message: '30'
+              message: t('FormValidation:MaxLength').replace('{0}', '30')
             }
           })
         }
-        errorMessage={getError(errors.first_name)}
+        errorMessage={errors.first_name?.message}
       />
       <FormRow
-        labelName={t('UserFormLastName')}
+        labelName={t('SignUpForm:UserFormLastName')}
         className={styles.formRow}
         inputId="last_name"
         inputType="text"
         inputRef={
           register({
-            required: true,
+            required: t('FormValidation:Required'),
             maxLength: {
               value: 30,
-              message: '30'
+              message: t('FormValidation:MaxLength').replace('{0}', '30')
             }
           })
         }
-        errorMessage={getError(errors.last_name)}
+        errorMessage={errors.last_name?.message}
       />
       <FormRow
-        labelName={t('UserFormEmail')}
+        labelName={t('SignUpForm:UserFormEmail')}
         className={styles.formRow}
         inputId="email"
         inputType="email"
         inputRef={
           register({
-            required: true
+            required: t('FormValidation:Required'),
           })
         }
-        errorMessage={getError(errors.email)}
+        errorMessage={errors.email?.message}
       />
       <FormRow
-        labelName={t('UserFormPassword')}
+        labelName={t('SignUpForm:UserFormPassword')}
         className={styles.formRow}
         inputId="password"
         inputType="password"
         inputRef={
           register({
-            required: true,
+            required: t('FormValidation:Required'),
             minLength: {
               value: 6,
-              message: '6'
+              message: t('FormValidation:MinLength').replace('{0}', '6')
             }
           })
         }
-        errorMessage={getError(errors.password)}
+        errorMessage={errors.password?.message}
       />
       <FormRow
-        labelName={t('UserFormConfirmPassword')}
+        labelName={t('SignUpForm:UserFormConfirmPassword')}
         className={styles.formRow}
         inputId="password_confirmation"
         inputType="password"
         inputRef={register({
-          required: true,
-          validate: (value) => value === watch('password')
+          required: t('FormValidation:Required'),
+          validate: (value) => value === watch('password') || t('FormValidation:Validate')
         })}
-        errorMessage={getError(errors.password_confirmation)}
+        errorMessage={errors.password_confirmation?.message}
       />
 
-      <Button isFilled isSubmit>{t('SignUpButton')}</Button>
+      <Button isFilled isSubmit>{t('Common:SignUpButton')}</Button>
     </Form>
   );
 }

@@ -1,20 +1,17 @@
 import i18next from 'i18next';
 
-const en = {
-  "FormValidationRequired": "This field is required",
-  "FormValidationMaxLength": "The maximum characters allowed is {0}",
-  "FormValidationMinLength": "The minimum characters allowed is {0}",
-  "FormValidationError": "The field value is not correct",
-  "FormValidationValidate": "The field value does not match",
-};
+i18next.addResources('en', 'FormValidation', {
+  Required: 'This field is required',
+  MaxLength: 'The maximum characters allowed is {0}',
+  MinLength: 'The minimum characters allowed is {0}',
+  Error: 'The field value is not correct',
+  Validate: 'The field value does not match',
+});
 
-const es = {
-  "FormValidationRequired": "Este campo es requerido",
-  "FormValidationMaxLength": "El maximo de caracteres permitido es de {0}",
-  "FormValidationMinLength": "El minimo de caracteres permitido es de {0}",
-  "FormValidationError": "El valor ingresado no es correcto",
-  "FormValidationValidate": "El valor ingresado no coincide",
-};
-
-i18next.addResources('en', 'translation', en);
-i18next.addResources('es', 'translation', es);
+i18next.addResources('es', 'FormValidation', {
+  Required: 'Este campo es requerido',
+  MaxLength: 'El maximo de caracteres permitido es de {0}',
+  MinLength: 'El minimo de caracteres permitido es de {0}',
+  Error: 'El valor ingresado no es correcto',
+  Validate: 'El valor ingresado no coincide',
+});
