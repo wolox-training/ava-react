@@ -9,7 +9,6 @@ function requireAll(requireContext: __WebpackModuleApi.RequireContext) {
 i18next
   .use(initReactI18next)
   .init({
-    resources: LANGS,
     lng: DEFAULT_LANG,
     initImmediate: false
   });
