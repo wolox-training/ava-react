@@ -6,11 +6,6 @@ const LANGS: i18next.Resource = {
       "LanguageName": "English",
       "LoginButton": "Login",
       "SignUpButton": "Sign Up",
-      "UserFormFirstName": "Name",
-      "UserFormLastName": "Last Name",
-      "UserFormEmail": "Email",
-      "UserFormPassword": "Password",
-      "UserFormConfirmPassword": "Confirm Password",
     }
   },
   es: {
@@ -18,11 +13,6 @@ const LANGS: i18next.Resource = {
       "LanguageName": "Español",
       "LoginButton": "Ingresá",
       "SignUpButton": "Registrate",
-      "UserFormFirstName": "Nombre",
-      "UserFormLastName": "Apellido",
-      "UserFormEmail": "Email",
-      "UserFormPassword": "Contraseña",
-      "UserFormConfirmPassword": "Confirmacion de contraseña",
     }
   }
 };
