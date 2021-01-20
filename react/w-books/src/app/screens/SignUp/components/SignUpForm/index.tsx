@@ -9,6 +9,9 @@ import Button from '../../../../components/Button';
 import styles from './styles.module.scss';
 import { UserData } from './types';
 
+import {LOGIN, postUser} from '../../../../../services/userService';
+import { useLazyRequest } from '../../../../../hooks/useRequest';
+
 export default function SignUpForm() {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
@@ -17,7 +20,7 @@ export default function SignUpForm() {
     if (formData) {
       const data = { ...formData, locale: navigator.language };
 
-      console.log(data);
+      postUser(LOGIN, data).then(console.log);
     }
   }
 
