@@ -5,6 +5,7 @@ import FormScreen from '../../components/FormScreen';
 import Button from '../../components/Button';
 
 import LoginForm from './components/LoginForm';
+import PATHS from '~components/Routes/paths';
 
 export default function index() {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ export default function index() {
   return (
     <FormScreen>
       <LoginForm />
-      <Button>{t('Common:SignUpButton')}</Button>
+      <Button isLink to={PATHS.signUp}>{t('Common:SignUpButton')}</Button>
     </FormScreen>
   );
 }
