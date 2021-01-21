@@ -14,6 +14,7 @@ import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
 import { LOGIN, postUser } from '../../../../../services/userService';
+import useSession from '../../../../../hooks/useSession';
 
 
 interface UserData {
@@ -23,10 +24,11 @@ interface UserData {
 
 export default function LoginForm() {
   const { t } = useTranslation();
+  const { startSession } = useSession();
   const { errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(LOGIN, data),
+    request: (data: UserData) => postUser(LOGIN, data, startSession),
   })
 
   const login = (formData: UserData) => {
