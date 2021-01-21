@@ -13,7 +13,9 @@ export async function postUser(
   const response = await api.post(`users${action}`, user);
 
   if (response.ok) {
-    const token = "test_token";
+    const headers:any = response.headers;
+    const token = headers['access-token'];
+
     handleAccessToken?.(token);
   }
 
