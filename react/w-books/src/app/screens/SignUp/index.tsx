@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import PATHS from '~components/Routes/paths';
+import PATHS from '../../components/Routes/paths';
 
 import Button from '../../components/Button';
 import FormScreen from '../../components/FormScreen';

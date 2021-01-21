@@ -5,7 +5,7 @@ import FormScreen from '../../components/FormScreen';
 import Button from '../../components/Button';
 
 import LoginForm from './components/LoginForm';
-import PATHS from '~components/Routes/paths';
+import PATHS from '../../components/Routes/paths';
 
 export default function index() {
   const { t } = useTranslation();

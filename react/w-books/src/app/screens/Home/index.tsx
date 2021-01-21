@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router';
-import Navbar from '~components/Navbar'
-import PATHS from '~components/Routes/paths';
+import Navbar from '../../components/Navbar'
+import PATHS from '../../components/Routes/paths';
 
 import useSession from '../../../hooks/useSession';
 

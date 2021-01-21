@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import { LANGS } from '../../../constants/constants';
 
 import styles from './styles.module.scss';
-import Button from '~components/Button';
+import Button from '../Button';
 import clsx from 'clsx';
 
 interface ButtonLanguageProps {

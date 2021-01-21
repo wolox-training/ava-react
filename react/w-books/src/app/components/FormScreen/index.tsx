@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import ButtonLanguage from '~components/ButtonLanguage';
+import ButtonLanguage from '../ButtonLanguage';
 
 import LogoWolox from '../LogoWolox';
 
