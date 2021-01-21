@@ -12,7 +12,6 @@ export default function Home() {
     <>
       {!isLogged() && <Redirect to={PATHS.login} />}
       <Navbar />
-      Home
     </>
   )
 }

@@ -3,7 +3,6 @@ import { CamelcaseSerializer, SnakecaseSerializer } from 'cerealizr';
 const deserializer = new CamelcaseSerializer();
 const serializer = new SnakecaseSerializer();
 const baseURL = process.env.REACT_APP_API_BASE_URL;
-console.log(baseURL);
 const STATUS_CODES = {
   unauthorized: 401
 };
