@@ -6,6 +6,7 @@ i18next.addResources('en', 'FormValidation', {
   MinLength: 'The minimum characters allowed is {0}',
   Error: 'The field value is not correct',
   Validate: 'The field value does not match',
+  Format: 'The format is not correct'
 });
 
 i18next.addResources('es', 'FormValidation', {
@@ -14,4 +15,5 @@ i18next.addResources('es', 'FormValidation', {
   MinLength: 'El minimo de caracteres permitido es de {0}',
   Error: 'El valor ingresado no es correcto',
   Validate: 'El valor ingresado no coincide',
+  Format: 'El formato no es correcto'
 });

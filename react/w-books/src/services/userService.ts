@@ -5,5 +5,9 @@ export const SIGN_UP = '';
 export const LOGIN = '/sign_in';
 
 export async function postUser(action: typeof SIGN_UP | typeof LOGIN, user:any):Promise<ApiResponse<any, any>> {
-  return api.post(`users${action}`, user);
+  const response = await api.post(`users${action}`, user);
+
+  // response.headers["access-token"];
+
+  return response;
 }

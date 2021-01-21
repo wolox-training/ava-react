@@ -1,12 +1,20 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { Redirect } from 'react-router-dom';
 
 import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
+import PATHS from '../../../../components/Routes/paths';
+import Loading from '../../../../components/Loading';
+import ErrorMessage from '../../../../components/ErrorMessage';
 
 import styles from './styles.module.scss';
-import { useForm } from 'react-hook-form';
+
+import { useLazyRequest } from '../../../../../hooks/useRequest';
+import { LOGIN, postUser } from '../../../../../services/userService';
+
 
 interface UserData {
   email?: string;
@@ -17,15 +25,19 @@ export default function LoginForm() {
   const { t } = useTranslation();
   const { errors, register, handleSubmit } = useForm<UserData>();
 
+  const [userData, loading, error, request] = useLazyRequest({
+    request: (data: UserData) => postUser(LOGIN, data),
+  })
+
   const login = (formData: UserData) => {
     if (formData) {
-      const data = { ...formData, locale: navigator.language };
-
-      console.log(data);
+      request(formData)
     }
   }
 
   return (
+    userData ?
+    <Redirect to={PATHS.home} /> :
     <Form className={styles.loginForm} handleSubmit={handleSubmit(login)}>
       <FormRow
         labelName={t('LoginForm:UserFormEmail')}
@@ -35,6 +47,10 @@ export default function LoginForm() {
         inputRef={
           register({
             required: t('FormValidation:Required'),
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: t('FormValidation:Format')
+            }
           })
         }
         errorMessage={errors.email?.message}
@@ -52,7 +68,14 @@ export default function LoginForm() {
         errorMessage={errors.password?.message}
       />
 
-      <Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
+      {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
+
+      {
+        loading ? (<div className={styles.loading}> <Loading isGreen /> </div>)
+          :<Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
+      }
+
+      
     </Form>
   );
 }
