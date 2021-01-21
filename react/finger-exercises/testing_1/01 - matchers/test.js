@@ -5,10 +5,10 @@ describe('01 - matchers', () => {
     expect(pow(2, 2)).toBe(4);
   });
   it('pow returns undefined if there is no arguments', () => {
-    expect(pow()).toBe(undefined);
+    expect(pow()).toBeUndefined();
   });
   it('pow returns undefined if there is just one argument', () => {
-    expect(pow(2)).toBe(undefined);
+    expect(pow(2)).toBeUndefined();
   });
   it('pow returns an array of power results if array of pairs are sent as arguments', () => {
     expect(pow([2, 2], [4, 4], [6, 6])).toEqual([4, 256, 46656]);
