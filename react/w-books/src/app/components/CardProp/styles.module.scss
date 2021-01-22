@@ -1,0 +1,21 @@
+@import '../../../scss/colors';
+
+.card-prop {
+  font-size: inherit;
+
+  .card-prop-description {
+    font-size: inherit;
+    color: $secondary-text-color;
+  }
+
+  &.simple {
+
+    .card-prop-name {
+      display: none;
+    }
+
+    .card-prop-description {
+      font-size: 14px;
+    }
+  }
+}
