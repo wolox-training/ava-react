@@ -90,9 +90,6 @@ const testUser = async (user: any) => {
 
   return {
     mockLogin,
-    loginForm,
-    inputEmail,
-    inputPassword,
-    screenTest: screen
+    loginForm
   }
 }
