@@ -9,23 +9,30 @@ interface Route {
   exact: boolean;
   path: string;
   component: FunctionComponent;
+  restricted?: boolean;
+  private?: boolean;
 }
 
 const ROUTES: Route[] = [
   {
     exact: true,
     path: PATHS.login,
-    component: Login
+    component: Login,
+    restricted: true,
+    private: false
   },
   {
     exact: true,
     path: PATHS.signUp,
-    component: SignUp
+    component: SignUp,
+    restricted: true,
+    private: false
   },
   {
     exact: true,
     path: PATHS.home,
-    component: Home
+    component: Home,
+    private: true
   }
 ];
 
