@@ -13,9 +13,20 @@ interface ButtonProps {
   handleClick?: () => void;
   isLink?: boolean;
   to?: string;
+  testId?: string;
 }
 
-export default function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick, to, isLink }: ButtonProps) {
+export default function Button({ 
+  children, 
+  isSubmit, 
+  className, 
+  isFilled, 
+  isWidthAuto, 
+  handleClick, 
+  to, 
+  isLink,
+  testId
+}: ButtonProps) {
 
   return (
     isLink ?
@@ -23,6 +34,7 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
       to={to ?? '/'}
       type={isSubmit ? 'submit' : 'button'}
       onClick={handleClick}
+      data-testid={testId}
       className={
         clsx(
           styles.button,
@@ -36,6 +48,7 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
     <button
       type={isSubmit ? 'submit' : 'button'}
       onClick={handleClick}
+      data-testid={testId}
       className={clsx(
         styles.button,
         className,

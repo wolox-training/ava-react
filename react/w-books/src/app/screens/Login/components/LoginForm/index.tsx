@@ -23,9 +23,10 @@ interface UserData {
 
 interface LoginFormProps {
   testId?: string;
+  handleLogin?: (formData: UserData) => void;
 }
 
-export default function LoginForm({ testId }: LoginFormProps) {
+export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
   const { t } = useTranslation();
   const { startSession } = useSession();
   const { errors, register, handleSubmit } = useForm<UserData>();
@@ -34,7 +35,7 @@ export default function LoginForm({ testId }: LoginFormProps) {
     request: (data: UserData) => postUser(LOGIN, data, startSession),
   })
 
-  const login = (formData: UserData) => {
+  const login = (formData: UserData): void => {
     if (formData) {
       request(formData)
     }
@@ -43,7 +44,7 @@ export default function LoginForm({ testId }: LoginFormProps) {
   return (
     userData ?
       <Redirect to={PATHS.home} /> :
-      <Form className={styles.loginForm} handleSubmit={handleSubmit(login)} testId={testId}>
+      <Form className={styles.loginForm} handleSubmit={handleSubmit(handleLogin ?? login)} testId={testId}>
         <FormRow
           labelName={t('LoginForm:UserFormEmail')}
           className={styles.formRow}
