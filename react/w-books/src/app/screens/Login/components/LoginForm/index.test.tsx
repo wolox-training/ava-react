@@ -24,7 +24,7 @@ const InvalidCase2UserData = {
 };
 
 
-describe('Login form tests', () => {
+describe('Tests to login form', () => {
   it('Components are rendered', () => {
     render(<LoginForm testId="LoginForm" />, { wrapper: MemoryRouter });
 
