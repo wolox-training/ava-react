@@ -16,7 +16,12 @@ import { UserData } from './types';
 import { postUser, SIGN_UP } from '../../../../../services/userService';
 import { useLazyRequest } from '../../../../../hooks/useRequest';
 
-export default function SignUpForm() {
+interface SignUpFormProps {
+  testId?: string;
+  handleSignUp?: (formData: UserData) => void;
+}
+
+export default function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
@@ -35,7 +40,7 @@ export default function SignUpForm() {
   return (
     userData ?
       <Redirect to={PATHS.home} /> :
-      <Form className={styles.signUpForm} handleSubmit={handleSubmit(signUp)}>
+      <Form className={styles.signUpForm} handleSubmit={handleSubmit(handleSignUp ?? signUp)} testId={testId}>
         <FormRow
           labelName={t('SignUpForm:UserFormFirstName')}
           className={styles.formRow}
