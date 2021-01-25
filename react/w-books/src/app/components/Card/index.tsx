@@ -1,14 +1,28 @@
 import clsx from 'clsx';
 import React from 'react'
-import CardProp from '~components/CardProp';
+import CardProp, { iCardProp } from '../CardProp';
 
 import styles from './styles.module.scss';
 
-interface CardProps {
+export interface iCard {
+  imageUrl: string;
+  id: number;
+  title: string;
+  subtitle: string;
+  props: iCardProp[];
+}
+interface CardProps extends iCard {
   isSimple?: boolean;
 }
 
-export default function Card({ isSimple }: CardProps) {
+export default function Card({
+  isSimple,
+  imageUrl,
+  id,
+  title,
+  subtitle,
+  props
+}: CardProps) {
   return (
     <a className={
       clsx(styles.cardCard, {
@@ -17,27 +31,27 @@ export default function Card({ isSimple }: CardProps) {
     } href="/">
       <div className={clsx(styles.cardCover, styles.badge)}>
         <img
-          src="http://192.168.0.10:8080/img/book-cover.png"
-          alt="The image of Books title"
+          src={imageUrl}
+          alt={`The image of ${title}`}
           className={styles.cardCoverImage}
         />
       </div>
 
       <h3 className={styles.cardTitle}>
-        Título del libro
-        <span className={clsx(styles.cardSubtitle, styles.cardSubtitleDesktop)}>(género)</span>
+        {title}
+        <span className={clsx(styles.cardSubtitle, styles.cardSubtitleDesktop)}>({subtitle})</span>
       </h3>
-      <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>(género)</span>
+      <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>({subtitle})</span>
 
       <div className={styles.cardProps}>
-        <CardProp propName="Autor del libro: " value="Nombre del autor del libro" className={styles.cardProp} isSimple={isSimple} />
-        {!isSimple && (
-          <>
-            <CardProp propName="Editorial: " value="Nombre de la editorial" className={styles.cardProp} />
-            <CardProp propName="Año de publicacion: " value="Año de publicacion" className={styles.cardProp} />
-          </>
-        )}
-
+        {props.map(prop =>
+          <CardProp
+            propName={prop.propName}
+            value={prop.value}
+            className={styles.cardProp}
+            keepVisibleSimple={prop.keepVisibleSimple}
+            isSimple={isSimple}
+          />)}
       </div>
 
     </a>

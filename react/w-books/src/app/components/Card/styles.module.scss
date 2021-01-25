@@ -1,5 +1,7 @@
 @import '../../../scss/colors';
 
+@import '../../../scss/animations';
+
 @import '../../../scss/sizes';
 
 $badge-width-desktop: 95px;
@@ -113,6 +115,8 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
     max-width: 200px;
     padding: 30px;
     transition: transform 0.3s;
+
+    @extend %zoom-in-animation;
 
     &:hover {
       transform: scale(1.07);
