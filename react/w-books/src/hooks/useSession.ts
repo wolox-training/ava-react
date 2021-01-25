@@ -1,3 +1,4 @@
+import Session from "../types/Session";
 import { deleteData, getData, saveData, SESSION } from "../utils/manageData";
 
 const useSession = () => {
@@ -9,8 +10,8 @@ const useSession = () => {
     return false;
   };
 
-  const startSession = (accessToken:string) => {
-    saveData(SESSION, accessToken);
+  const startSession = (session: Session) => {
+    saveData(SESSION, session);
   };
 
   const getSession = () => {
@@ -28,6 +29,7 @@ const useSession = () => {
     isLogged,
     startSession,
     stopSession,
+    getSession,
   };
 };
 

@@ -1,6 +1,7 @@
 import { ApiResponse } from 'apisauce';
-import { saveData, SESSION } from '~utils/manageData';
-import api from '../config/api';
+import api, { getSession } from '../config/api';
+
+import Session from '../types/Session';
 
 export const SIGN_UP = '';
 export const LOGIN = '/sign_in';
@@ -8,15 +9,14 @@ export const LOGIN = '/sign_in';
 export async function postUser(
   action: typeof SIGN_UP | typeof LOGIN,
   user: any,
-  handleAccessToken?: (accessToken: string) => void
+  handleSession?: (session: Session) => void
 ): Promise<ApiResponse<any, any>> {
   const response = await api.post(`users${action}`, user);
 
   if (response.ok) {
-    const headers:any = response.headers;
-    const token = headers['access-token'];
+    const session = getSession(response);
 
-    handleAccessToken?.(token);
+    handleSession?.(session);
   }
 
   return response;
