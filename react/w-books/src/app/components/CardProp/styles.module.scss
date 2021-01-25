@@ -8,6 +8,10 @@
     color: $secondary-text-color;
   }
 
+  &.occult {
+    display: none;
+  }
+
   &.simple {
 
     .card-prop-name {
