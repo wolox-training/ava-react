@@ -1,0 +1,18 @@
+@import '../../../scss/colors';
+
+.button {
+  border-radius: 5px;
+  height: 30px;
+  max-width: 250px;
+  width: 100%;
+
+  &.filled {
+    background-color: $earls-green;
+    color: $white;
+  }
+
+  &:not(.filled) {
+    border: 1px solid $earls-green;
+    color: $earls-green;
+  }
+}

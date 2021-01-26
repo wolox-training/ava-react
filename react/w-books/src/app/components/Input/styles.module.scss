@@ -1,0 +1,10 @@
+@import '../../../scss/colors';
+
+.input {
+  border-radius: 5px;
+  color: $primary-text-color;
+  height: 30px;
+  max-width: 250px;
+  padding: 0 10px;
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+@import '../../../scss/colors';
+
+.form-row {
+
+  .form-row-label {
+    margin-bottom: 10px;
+    color: $primary-text-color;
+  }
+
+  .form-row-input {
+    display: block;
+  }
+
+  .form-row-error {
+    color: $scarlet;
+    font-size: 13px;
+    padding: 5px 0;
+  }
+}

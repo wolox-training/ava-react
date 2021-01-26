@@ -1,0 +1,16 @@
+@import '../../../../../scss/colors';
+
+.sign-up-form {
+  padding-top: 15px;
+
+  &::after {
+    content: '';
+    display: block;
+    border-bottom: 2px solid $silver-chalice;
+    margin: 15px 0;
+  }
+
+  .form-row {
+    margin-bottom: 15px;
+  }
+}
