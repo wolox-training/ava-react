@@ -13,6 +13,7 @@ export default function CardList({ items }: CardListProps) {
     <div className={styles.cardList}>
       {items.map(item =>
         <Card
+          key={`Card-${item.id}`}
           imageUrl={item.imageUrl}
           id={item.id}
           title={item.title}

@@ -46,6 +46,7 @@ export default function Card({
       <div className={styles.cardProps}>
         {props.map(prop =>
           <CardProp
+            key={`CardProp-${prop.propName}`}
             propName={prop.propName}
             value={prop.value}
             className={styles.cardProp}
