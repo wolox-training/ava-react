@@ -6,7 +6,7 @@ import { Redirect } from 'react-router';
 import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
-import Loading from '../../../../components/Loading';
+import withLoading from '../../../../components/Loading';
 import ErrorMessage from '../../../../components/ErrorMessage';
 import PATHS from '../../../../components/Routes/paths';
 
@@ -116,8 +116,13 @@ export default function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
         {error && (<ErrorMessage>{t(`SignUpForm:${error.problem}`)}</ErrorMessage>)}
 
         {
-          loading ? (<div className={styles.loading}> <Loading isGreen /> </div>)
-            : <Button isFilled isSubmit>{t('Common:SignUpButton')}</Button>
+          withLoading(Button)({
+            loading,
+            loadingClassName: styles.loading,
+            isFilled:true, 
+            isSubmit:true,
+            children: t('Common:SignUpButton'),
+          })
         }
 
       </Form>

@@ -8,11 +8,11 @@ import useSession from '../../../hooks/useSession';
 
 import Navbar from '../../components/Navbar';
 import ErrorMessage from '../../components/ErrorMessage';
-import Loading from '../../components/Loading';
+import withLoading from '../../components/Loading';
 import CardList from '../../components/CardList';
 
 import styles from './styles.module.scss';
-import { mapToCards } from './utils';
+import { bookToCard } from '../../../utils/bookToCard';
 import ButtonLanguage from '~components/ButtonLanguage';
 
 
@@ -32,11 +32,14 @@ export default function Home() {
       {error && (<ErrorMessage className={styles.container}>{t(`Home:${error.problem}`)}</ErrorMessage>)}
 
       {
-        loading ? (<div className={styles.container}> <Loading isGreen /> </div>)
-          : <CardList items={mapToCards(response?.page)} />
+        withLoading(CardList)({
+          loading,
+          loadingClassName: styles.container,
+          items: response?.page ? response.page.map(bookToCard) : []
+        })
       }
-
-      <ButtonLanguage className={styles.languagesContainer}/>
+      
+      <ButtonLanguage className={styles.languagesContainer} />
     </>
   )
 }

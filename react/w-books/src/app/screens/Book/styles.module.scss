@@ -1,0 +1,54 @@
+@import '../../../scss/sizes';
+
+.book-page {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .aside {
+    grid-area: aside;
+  }
+
+  .book-card {
+    grid-area: book-card;
+  }
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: $breakpoint-tablet) {
+
+  .book-page {
+    display: grid;
+    grid-template-areas: 'aside'
+      'book-card';
+    grid-template-rows: 10vh 1fr;
+    justify-content: center;
+    padding: 20px;
+
+    .aside {
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-phone) {
+
+  .book-page {
+    grid-template-areas: 'book-card'
+      'aside';
+    grid-template-rows: auto;
+
+    .aside {
+      justify-self: center;
+      justify-content: center;
+    }
+  }
+}

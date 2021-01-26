@@ -7,7 +7,7 @@ import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
 import PATHS from '../../../../components/Routes/paths';
-import Loading from '../../../../components/Loading';
+import withLoading from '../../../../components/Loading';
 import ErrorMessage from '../../../../components/ErrorMessage';
 
 import styles from './styles.module.scss';
@@ -77,10 +77,14 @@ export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
         {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
 
         {
-          loading ? (<div className={styles.loading}> <Loading isGreen /> </div>)
-            : <Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
+          withLoading(Button)({
+            loading,
+            loadingClassName: styles.loading,
+            isFilled:true, 
+            isSubmit:true,
+            children: t('Common:LoginButton'),
+          })
         }
-
 
       </Form>
   );
