@@ -2,10 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormScreen from '../../components/FormScreen';
-import Button from '../../components/Button';
+import PATHS from '../../components/Routes/paths';
+import LinkButton from '../../components/Link';
 
 import LoginForm from './components/LoginForm';
-import PATHS from '~components/Routes/paths';
 
 export default function index() {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export default function index() {
   return (
     <FormScreen>
       <LoginForm />
-      <Button isLink to={PATHS.signUp}>{t('Common:SignUpButton')}</Button>
+      <LinkButton to={PATHS.signUp}>{t('Common:SignUpButton')}</LinkButton>
     </FormScreen>
   );
 }
