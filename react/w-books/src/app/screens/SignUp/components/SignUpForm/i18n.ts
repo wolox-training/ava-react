@@ -6,6 +6,7 @@ i18next.addResources('en', 'SignUpForm', {
   UserFormEmail: 'Email',
   UserFormPassword: 'Password',
   UserFormConfirmPassword: 'Confirm Password',
+  CLIENT_ERROR: 'The data entered is not valid'
 });
 
 i18next.addResources('es', 'SignUpForm', {
@@ -14,4 +15,5 @@ i18next.addResources('es', 'SignUpForm', {
   UserFormEmail: 'Email',
   UserFormPassword: 'Contraseña',
   UserFormConfirmPassword: 'Confirmacion de contraseña',
+  CLIENT_ERROR: 'Los datos ingresados no son válidos'
 });
