@@ -25,8 +25,8 @@ export default function Card({
 }: CardProps) {
   return (
     <a className={
-      clsx(styles.cardCard, {
-        [styles.cardCardSimple]: isSimple
+      clsx(styles.card, {
+        [styles.cardSimple]: isSimple
       })
     } href="/">
       <div className={clsx(styles.cardCover, styles.badge)}>
