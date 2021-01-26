@@ -1,8 +1,6 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
 
-import styles from './styles.module.scss';
-
 interface ButtonProps {
   children: ReactNode;
   className?: string;
@@ -19,13 +17,14 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
       type={isSubmit ? 'submit' : 'button'}
       onClick={handleClick}
       className={clsx(
-        styles.button,
+        'button',
         className,
         {
-          [styles.filled]: isFilled,
-          [styles.autoWidth]: isWidthAuto
+          ['filled']: isFilled,
+          ['auto-width']: isWidthAuto
         }
-      )}>
+      )}
+    >
       {children}
     </button>
   );

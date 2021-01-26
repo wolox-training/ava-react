@@ -1,7 +1,10 @@
-@import '../../../scss/colors';
+@import '../colors';
 
 .button {
+  align-items: center;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
   height: 30px;
   padding: 0 5px;
 

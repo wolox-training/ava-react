@@ -1,25 +1,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import LinkButton from '~components/Link';
+import PATHS from '~components/Routes/paths';
 
 import Button from '../../components/Button';
-import ButtonLanguage from '../../components/ButtonLanguage';
-import LogoWolox from '../../components/LogoWolox';
+import FormScreen from '../../components/FormScreen';
 
 import SignUpForm from './components/SignUpForm';
-import styles from './styles.module.scss';
 
 
 export default function SignUp() {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.signUpLayout}>
-      <main className={styles.signUpContainer}>
-        <LogoWolox className={styles.woloxLogo} />
-        <SignUpForm />
-        <Button>{t('Common:LoginButton')}</Button>
-      </main>
-      <ButtonLanguage className={styles.languagesContainer}/>
-    </div>
+    <FormScreen>
+      <SignUpForm />
+      <LinkButton to={PATHS.login}>{t('Common:LoginButton')}</LinkButton>
+    </FormScreen>
   );
 }
