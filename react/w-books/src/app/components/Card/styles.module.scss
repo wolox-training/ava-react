@@ -29,7 +29,7 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
   margin-top: 10px;
 }
 
-.card-card {
+.card {
   background-color: $background-color;
   box-shadow: 4px 4px 10px 0 $border-color;
   display: flex;
@@ -71,7 +71,7 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
     grid-area: card-props;
   }
 
-  &:not(.card-card-simple) {
+  &:not(.card-simple) {
     display: grid;
     grid-gap: 0 35px;
     grid-template-areas: 'card-cover card-title'
@@ -110,7 +110,7 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
     }
   }
 
-  &.card-card-simple {
+  &.card-simple {
     max-width: 200px;
     padding: 30px;
     transition: transform 0.3s;
@@ -148,7 +148,7 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
     background-size: 100% auto;
   }
 
-  .card-card:not(.card-card-simple) {
+  .card:not(.card-simple) {
     justify-content: center;
     margin-top: 0;
     grid-template: 40px 40px auto / minmax(auto, 200px) auto;
@@ -186,7 +186,7 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
 
 @media (max-width: $breakpoint-phone) {
 
-  .card-card:not(.card-card-simple) {
+  .card:not(.card-simple) {
     grid-gap: 0;
     grid-template: auto / minmax(auto, 600px);
     grid-template-areas: 'card-title'

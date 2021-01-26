@@ -31,9 +31,9 @@ export default function Card({
   return (
     <Link className={
       clsx(
-        styles.cardCard,
+        styles.card,
         className, {
-        [styles.cardCardSimple]: isSimple
+        [styles.cardSimple]: isSimple
       })
     } to={to ?? ''}>
       <div className={clsx(styles.cardCover, styles.badge)}>
