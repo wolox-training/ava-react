@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react'
+import { Link } from 'react-router-dom';
 import CardProp, { iCardProp } from '../CardProp';
 
 import styles from './styles.module.scss';
@@ -9,26 +10,32 @@ export interface iCard {
   id: number;
   title: string;
   subtitle: string;
+  to?: string;
   props: iCardProp[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
+  className?: string;
 }
 
 export default function Card({
   isSimple,
+  className,
   imageUrl,
   id,
   title,
   subtitle,
+  to,
   props
 }: CardProps) {
   return (
-    <a className={
-      clsx(styles.cardCard, {
+    <Link className={
+      clsx(
+        styles.cardCard,
+        className, {
         [styles.cardCardSimple]: isSimple
       })
-    } href="/">
+    } to={to ?? ''}>
       <div className={clsx(styles.cardCover, styles.badge)}>
         <img
           src={imageUrl}
@@ -54,6 +61,6 @@ export default function Card({
           />)}
       </div>
 
-    </a>
+    </Link>
   )
 }

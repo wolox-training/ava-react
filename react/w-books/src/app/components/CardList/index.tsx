@@ -17,6 +17,7 @@ export default function CardList({ items }: CardListProps) {
           id={item.id}
           title={item.title}
           subtitle={item.subtitle}
+          to={item.to}
           props={item.props}
           isSimple
         />)}
