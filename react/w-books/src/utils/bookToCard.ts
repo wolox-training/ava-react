@@ -1,6 +1,6 @@
 import Book from "../types/Book";
 import { iCard } from '../app/components/Card';
-import PATHS from "~components/Routes/paths";
+import PATHS from "../app/components/Routes/paths";
 
 export function bookToCard(book: Book): iCard {
   return {
@@ -11,16 +11,16 @@ export function bookToCard(book: Book): iCard {
     to: PATHS.book.replace(':id', `${book.id}`),
     props: [
       {
-        propName: 'Autor del libro: ',
+        propName: 'Book:AuthorLabel',
         value: book.author,
         keepVisibleSimple: true,
       },
       {
-        propName: 'Editorial: ',
+        propName: 'Book:EditorLabel',
         value: book.editor,
       },
       {
-        propName: 'Año de publicacion: ',
+        propName: 'Book:YearLabel',
         value: `${book.year}`,
       }
     ]
