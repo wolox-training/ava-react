@@ -6,18 +6,24 @@ import PATHS from '../Routes/paths';
 
 import styles from './styles.module.scss';
 
-import useSession from '../../../hooks/useSession';
+import { useDispatch } from '../../contexts/UserContext';
+import { actionCreators } from '../../contexts/UserContext/reducer';
+import { deleteData, SESSION } from '~utils/manageData';
 
 export default function Navbar() {
-  const { stopSession } = useSession();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const stopSession = () => {
+    deleteData(SESSION);
+    dispatch(actionCreators.resetSession());
+  }
 
   return (
     <nav className={styles.nav}>
       <LogoWolox className={styles.navLogo} />
       <a
         onClick={stopSession}
-        href={PATHS.login}
         className={styles.navOption}
       >
         {t('Common:LogoutButton')}

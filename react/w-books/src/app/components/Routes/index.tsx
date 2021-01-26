@@ -35,7 +35,6 @@ export default function Routes() {
           }
         </Switch>
       </BrowserRouter>
-      {session?.uid ?? 'F'}
     </React.Suspense>
   )
 }

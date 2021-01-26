@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Context, useDispatch, useSelector } from './contexts/UserContext';
+import { Context, useDispatch } from './contexts/UserContext';
 import { reducer, INITIAL_STATE, actionCreators } from './contexts/UserContext/reducer';
 
 import { getData, SESSION } from "../utils/manageData";
@@ -13,6 +13,7 @@ function App() {
 
   const checkSession = () => {
     const session = getData(SESSION);
+
     dispatch(actionCreators.setSession(session));
   }
 
