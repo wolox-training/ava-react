@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import LinkButton from '~components/Link';
 import PATHS from '~components/Routes/paths';
 
 import Button from '../../components/Button';
@@ -14,7 +15,7 @@ export default function SignUp() {
   return (
     <FormScreen>
       <SignUpForm />
-      <Button isLink to={PATHS.login}>{t('Common:LoginButton')}</Button>
+      <LinkButton to={PATHS.login}>{t('Common:LoginButton')}</LinkButton>
     </FormScreen>
   );
 }
