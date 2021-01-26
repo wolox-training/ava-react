@@ -7,7 +7,7 @@ export interface UserState {
 }
 
 export const INITIAL_STATE = {
-  session: { "uid": "agustin.vazquez@wolox.com.ar", "access-token": "2TY9PyhTR_4ZyaulPTHaTQ", "client": "bM5aB5Ffv4k92uiMeJzqHA" }
+  session: null
 };
 
 enum ActionTypes {
@@ -27,8 +27,8 @@ interface ResetSession {
 export type Action = SetSession | ResetSession;
 
 export const actionCreators = {
-  setFoo: (session: Session): SetSession => ({ type: ActionTypes.SET_SESSION, payload: session }),
-  resetFoo: (): ResetSession => ({ type: ActionTypes.RESET_SESSION })
+  setSession: (session: Session): SetSession => ({ type: ActionTypes.SET_SESSION, payload: session }),
+  resetSession: (): ResetSession => ({ type: ActionTypes.RESET_SESSION })
 };
 
 export const reducer = (state: UserState, action: Action): UserState => {

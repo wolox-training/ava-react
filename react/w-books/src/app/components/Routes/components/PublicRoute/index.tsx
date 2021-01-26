@@ -10,17 +10,16 @@ interface PublicRouteProps {
   restricted?: boolean;
   path: string;
   exact: boolean;
+  hasSession: boolean;
 }
 
-export default function PublicRoute({ component: Component, restricted, path, exact }: PublicRouteProps) {
-  const { isLogged } = useSession();
-
+export default function PublicRoute({ component: Component, restricted, path, exact, hasSession }: PublicRouteProps) {
   return (
     <Route
       path={path}
       exact={exact}
       render={(props) =>
-        isLogged() && restricted ? (
+        hasSession && restricted ? (
           <Redirect to={PATHS.home} />
         ) : (
             <Component {...props} />
