@@ -1,8 +1,6 @@
 import React, { Component, FunctionComponent, ReactNode } from 'react'
 import { Route, Redirect } from 'react-router-dom';
 
-import useSession from '../../../../../hooks/useSession';
-
 import PATHS from '../../paths';
 
 interface PublicRouteProps {

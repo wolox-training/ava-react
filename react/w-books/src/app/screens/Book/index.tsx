@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { getBooks } from '../../../services/booksService';
 import { useRequest } from '../../../hooks/useRequest';
-import useSession from '../../../hooks/useSession';
 import { bookToCard } from '../../../utils/bookToCard';
 
 import styles from './styles.module.scss';
@@ -15,6 +14,7 @@ import Card from '../../components/Card';
 import ButtonLanguage from '../../components/ButtonLanguage';
 import ErrorMessage from '../../components/ErrorMessage';
 import withLoading from '../../components/Loading';
+import { useSelector } from '../../contexts/UserContext';
 
 
 interface BookProps {
@@ -22,13 +22,13 @@ interface BookProps {
 }
 
 export default function Book({ match: urlParams }: BookProps) {
-  const { getSession } = useSession();
   const { t } = useTranslation();
 
   const bookId = urlParams.params.id;
+  const session = useSelector(state => state.session);
 
   const [book, loading, error] = useRequest({
-    request: () => getBooks(getSession(), bookId),
+    request: () => getBooks(session, bookId),
     payload: null,
   }, []);
 

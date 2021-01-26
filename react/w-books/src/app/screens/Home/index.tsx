@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import { useRequest } from '../../../hooks/useRequest';
 import { getBooks } from '../../../services/booksService';
-import useSession from '../../../hooks/useSession';
 
 import Navbar from '../../components/Navbar';
 import ErrorMessage from '../../components/ErrorMessage';
@@ -13,15 +12,16 @@ import CardList from '../../components/CardList';
 
 import styles from './styles.module.scss';
 import { bookToCard } from '../../../utils/bookToCard';
-import ButtonLanguage from '~components/ButtonLanguage';
-
+import ButtonLanguage from '../../components/ButtonLanguage';
+import { useSelector } from '../../contexts/UserContext';
 
 export default function Home() {
-  const { getSession } = useSession();
   const { t } = useTranslation();
 
+  const session = useSelector(state => state.session);
+
   const [response, loading, error] = useRequest({
-    request: () => getBooks(getSession()),
+    request: () => getBooks(session),
     payload: null,
   }, []);
 
