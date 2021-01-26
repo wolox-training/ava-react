@@ -1,36 +1,19 @@
 import React, { ChangeEvent, useState } from 'react';
+import { FieldError, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
 
 import styles from './styles.module.scss';
-import { useTranslation } from 'react-i18next';
-
-interface UserData {
-  email?: string;
-  password?: string;
-  password_confirmation?: string;
-  first_name?: string;
-  last_name?: string;
-  locale?: string;
-}
+import { UserData } from './types';
 
 export default function SignUpForm() {
-  const [formData, setFormData] = useState<UserData | null>(null);
   const { t } = useTranslation();
+  const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event?.target?.id) {
-      event.persist();
-
-      setFormData((actualFormData: UserData | null) =>
-        ({ ...actualFormData, [event.target.id]: event.target.value })
-      );
-    }
-  }
-
-  const signUp = () => {
+  const signUp = (formData: UserData) => {
     if (formData) {
       const data = { ...formData, locale: navigator.language };
 
@@ -39,44 +22,80 @@ export default function SignUpForm() {
   }
 
   return (
-    <Form className={styles.signUpForm} handleSubmit={signUp}>
+    <Form className={styles.signUpForm} handleSubmit={handleSubmit(signUp)}>
       <FormRow
-        labelName={t('UserFormFirstName')}
+        labelName={t('SignUpForm:UserFormFirstName')}
         className={styles.formRow}
         inputId="first_name"
         inputType="text"
-        handleInputChange={handleInputChange}
+        inputRef={
+          register({
+            required: t('FormValidation:Required'),
+            maxLength: {
+              value: 30,
+              message: t('FormValidation:MaxLength').replace('{0}', '30')
+            }
+          })
+        }
+        errorMessage={errors.first_name?.message}
       />
       <FormRow
-        labelName={t('UserFormLastName')}
+        labelName={t('SignUpForm:UserFormLastName')}
         className={styles.formRow}
         inputId="last_name"
         inputType="text"
-        handleInputChange={handleInputChange}
+        inputRef={
+          register({
+            required: t('FormValidation:Required'),
+            maxLength: {
+              value: 30,
+              message: t('FormValidation:MaxLength').replace('{0}', '30')
+            }
+          })
+        }
+        errorMessage={errors.last_name?.message}
       />
       <FormRow
-        labelName={t('UserFormEmail')}
+        labelName={t('SignUpForm:UserFormEmail')}
         className={styles.formRow}
         inputId="email"
         inputType="email"
-        handleInputChange={handleInputChange}
+        inputRef={
+          register({
+            required: t('FormValidation:Required'),
+          })
+        }
+        errorMessage={errors.email?.message}
       />
       <FormRow
-        labelName={t('UserFormPassword')}
+        labelName={t('SignUpForm:UserFormPassword')}
         className={styles.formRow}
         inputId="password"
         inputType="password"
-        handleInputChange={handleInputChange}
+        inputRef={
+          register({
+            required: t('FormValidation:Required'),
+            minLength: {
+              value: 6,
+              message: t('FormValidation:MinLength').replace('{0}', '6')
+            }
+          })
+        }
+        errorMessage={errors.password?.message}
       />
       <FormRow
-        labelName={t('UserFormConfirmPassword')}
+        labelName={t('SignUpForm:UserFormConfirmPassword')}
         className={styles.formRow}
         inputId="password_confirmation"
         inputType="password"
-        handleInputChange={handleInputChange}
+        inputRef={register({
+          required: t('FormValidation:Required'),
+          validate: (value) => value === watch('password') || t('FormValidation:Validate')
+        })}
+        errorMessage={errors.password_confirmation?.message}
       />
 
-      <Button isFilled isSubmit>{t('SignUpButton')}</Button>
+      <Button isFilled isSubmit>{t('Common:SignUpButton')}</Button>
     </Form>
   );
 }
