@@ -64,6 +64,10 @@ $badge-width-mobile: calc(#{$badge-width-desktop} - (#{$badge-width-desktop} * 3
 
     &.card-subtitle-desktop {
       grid-area: card-subtitle-desktop;
+
+      &::before {
+        content: '\00a0 ';
+      }
     }
   }
 
