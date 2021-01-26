@@ -2,8 +2,6 @@ import clsx from 'clsx';
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from '../../../scss/common/button.module.scss';
-
 interface LinkButtonProps {
   children: ReactNode;
   className?: string;
@@ -19,11 +17,11 @@ export default function LinkButton({ children, className, isFilled, isWidthAuto,
       to={to ?? '/'}
       className={
         clsx(
-          styles.button,
+          'button',
           className,
           {
-            [styles.filled]: isFilled,
-            [styles.autoWidth]: isWidthAuto
+            ['filled']: isFilled,
+            ['auto-width']: isWidthAuto
           }
         )}
     > {children}</Link >
