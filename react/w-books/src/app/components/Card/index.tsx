@@ -7,12 +7,12 @@ import CardProp, { iCardProp } from '../CardProp';
 import styles from './styles.module.scss';
 
 export interface iCard {
-  imageUrl: string;
-  id: number;
-  title: string;
-  subtitle: string;
+  imageUrl?: string;
+  id?: number;
+  title?: string;
+  subtitle?: string;
   to?: string;
-  props: iCardProp[];
+  props?: iCardProp[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -56,7 +56,7 @@ export default function Card({
       <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>({subtitle})</span>
 
       <div className={styles.cardProps}>
-        {props.map(prop =>
+        {props && props.map(prop =>
           <CardProp
             propName={translateProps ? t(prop.propName) : prop.propName}
             value={prop.value}

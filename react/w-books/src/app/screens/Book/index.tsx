@@ -14,7 +14,7 @@ import PATHS from '../../components/Routes/paths';
 import Card from '../../components/Card';
 import ButtonLanguage from '../../components/ButtonLanguage';
 import ErrorMessage from '../../components/ErrorMessage';
-import Loading from '../../components/Loading';
+import withLoading from '../../components/Loading';
 
 
 interface BookProps {
@@ -39,8 +39,13 @@ export default function Book({ match: urlParams }: BookProps) {
           <ButtonBack path={PATHS.home} />
         </aside>
         {
-          loading ? (<div className={styles.container}> <Loading isGreen /> </div>)
-            : book && <Card className={styles.bookCard} {...bookToCard(book)} translateProps/>
+          withLoading(Card)({
+            loading,
+            loadingClassName: styles.container,
+            className: styles.bookCard,
+            translateProps: true,
+            ...bookToCard(book)
+          })
         }
       </div>
 
