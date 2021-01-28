@@ -11,7 +11,7 @@ interface Route {
   component: FunctionComponent;
 }
 
-const ROUTES: Route[] = [
+export const ROUTES: Route[] = [
   {
     exact: true,
     path: PATHS.login,
@@ -28,5 +28,3 @@ const ROUTES: Route[] = [
     component: Home
   }
 ];
-
-export { ROUTES };
