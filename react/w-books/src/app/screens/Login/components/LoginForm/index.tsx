@@ -13,7 +13,7 @@ import ErrorMessage from '../../../../components/ErrorMessage';
 import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
-import { LOGIN, postUser } from '../../../../../services/userService';
+import { login } from '../../../../../services/userService';
 
 
 interface UserData {
@@ -26,10 +26,10 @@ function LoginForm() {
   const { errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(LOGIN, data),
+    request: (data: UserData) => login(data),
   })
 
-  const login = (formData: UserData) => {
+  const onSubmit = (formData: UserData) => {
     if (formData) {
       request(formData)
     }
@@ -38,7 +38,7 @@ function LoginForm() {
   return (
     userData ?
     <Redirect to={PATHS.home} /> :
-    <Form className={styles.loginForm} handleSubmit={handleSubmit(login)}>
+    <Form className={styles.loginForm} handleSubmit={handleSubmit(onSubmit)}>
       <FormRow
         labelName={t('LoginForm:UserFormEmail')}
         className={styles.formRow}
