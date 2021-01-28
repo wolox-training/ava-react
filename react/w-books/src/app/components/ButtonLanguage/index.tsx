@@ -12,17 +12,15 @@ interface ButtonLanguageProps {
 }
 
 function ButtonLanguage({ className }: ButtonLanguageProps) {
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('');
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(i18next.language);
 
-  useEffect(() => {
-    setSelectedLanguage(i18next.language);
-  }, [])
+  const setLanguage = (lang:string) => {
+    setSelectedLanguage(lang);
 
-  useEffect(() => {
-    if (i18next.language !== selectedLanguage) {
-      i18next.changeLanguage(selectedLanguage)
+    if (i18next.language !== lang) {
+      i18next.changeLanguage(lang);
     }
-  }, [selectedLanguage])
+  }
 
   return (
     <div className={clsx(className && className)}>
@@ -33,7 +31,7 @@ function ButtonLanguage({ className }: ButtonLanguageProps) {
             isFilled={lang === selectedLanguage}
             isWidthAuto
             key={lang}
-            handleClick={() => setSelectedLanguage(lang)}
+            handleClick={() => setLanguage(lang)}
           >
             {LANGS[lang].translation.LanguageName}
           </Button>
