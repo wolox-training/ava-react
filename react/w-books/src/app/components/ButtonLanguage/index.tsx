@@ -11,7 +11,7 @@ interface ButtonLanguageProps {
   className?: string;
 }
 
-export default function ButtonLanguage({ className }: ButtonLanguageProps) {
+function ButtonLanguage({ className }: ButtonLanguageProps) {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('');
 
   useEffect(() => {
@@ -42,3 +42,5 @@ export default function ButtonLanguage({ className }: ButtonLanguageProps) {
     </div>
   )
 }
+
+export default ButtonLanguage;

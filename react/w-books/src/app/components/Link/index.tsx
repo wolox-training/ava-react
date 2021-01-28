@@ -10,7 +10,7 @@ interface LinkButtonProps {
   to?: string;
 }
 
-export default function LinkButton({ children, className, isFilled, isWidthAuto, to }: LinkButtonProps) {
+function LinkButton({ children, className, isFilled, isWidthAuto, to }: LinkButtonProps) {
 
   return (
     <Link
@@ -27,3 +27,5 @@ export default function LinkButton({ children, className, isFilled, isWidthAuto,
     > {children}</Link >
   );
 }
+
+export default LinkButton;

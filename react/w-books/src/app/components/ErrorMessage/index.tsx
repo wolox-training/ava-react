@@ -6,10 +6,12 @@ interface ErrorMessageProps {
   children: ReactNode;
 }
 
-export default function ErrorMessage({children}:ErrorMessageProps) {
+function ErrorMessage({children}:ErrorMessageProps) {
   return (
     <div className={styles.errorMessage}>
       {children}
     </div>
   )
 }
+
+export default ErrorMessage;

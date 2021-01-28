@@ -3,13 +3,12 @@ import { useTranslation } from 'react-i18next';
 import LinkButton from '~components/Link';
 import PATHS from '~components/Routes/paths';
 
-import Button from '../../components/Button';
 import FormScreen from '../../components/FormScreen';
 
 import SignUpForm from './components/SignUpForm';
 
 
-export default function SignUp() {
+function SignUp() {
   const { t } = useTranslation();
 
   return (
@@ -19,3 +18,5 @@ export default function SignUp() {
     </FormScreen>
   );
 }
+
+export default SignUp;

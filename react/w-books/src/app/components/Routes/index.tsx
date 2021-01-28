@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ROUTES } from './constants';
 
-export default function Routes() {
+function Routes() {
   return (
     <React.Suspense fallback="Cargando...">
       <BrowserRouter>
@@ -15,3 +15,5 @@ export default function Routes() {
     </React.Suspense>
   )
 }
+
+export default Routes;

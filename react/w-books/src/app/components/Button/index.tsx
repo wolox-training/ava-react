@@ -10,7 +10,7 @@ interface ButtonProps {
   handleClick?: () => void;
 }
 
-export default function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick }: ButtonProps) {
+function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick }: ButtonProps) {
 
   return (
     <button
@@ -29,3 +29,5 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
     </button>
   );
 }
+
+export default Button;

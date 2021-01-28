@@ -16,7 +16,7 @@ import { UserData } from './types';
 import { postUser, SIGN_UP } from '../../../../../services/userService';
 import { useLazyRequest } from '../../../../../hooks/useRequest';
 
-export default function SignUpForm() {
+function SignUpForm() {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
@@ -118,3 +118,5 @@ export default function SignUpForm() {
       </Form>
   );
 }
+
+export default SignUpForm;

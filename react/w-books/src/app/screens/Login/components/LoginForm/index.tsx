@@ -21,7 +21,7 @@ interface UserData {
   password?: string;
 }
 
-export default function LoginForm() {
+function LoginForm() {
   const { t } = useTranslation();
   const { errors, register, handleSubmit } = useForm<UserData>();
 
@@ -79,3 +79,5 @@ export default function LoginForm() {
     </Form>
   );
 }
+
+export default LoginForm;

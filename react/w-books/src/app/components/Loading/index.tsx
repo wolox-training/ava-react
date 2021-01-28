@@ -7,7 +7,7 @@ interface LoadingProps {
   isGreen?: boolean;
 }
 
-export default function Loading({ isGreen }: LoadingProps): JSX.Element {
+function Loading({ isGreen }: LoadingProps): JSX.Element {
   return (
     <svg width="64px" height="64px" viewBox="0 0 128 128" className={clsx(
       styles.loading, {
@@ -21,3 +21,5 @@ export default function Loading({ isGreen }: LoadingProps): JSX.Element {
     </svg>
   )
 }
+
+export default Loading;
