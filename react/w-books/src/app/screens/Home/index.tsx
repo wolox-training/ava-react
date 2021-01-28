@@ -5,9 +5,9 @@ import PATHS from '~components/Routes/paths';
 
 import useSession from '../../../hooks/useSession';
 
-export default function Home() {
+function Home() {
   const { isLogged } = useSession();
-
+  
   return (
     <>
       {!isLogged() && <Redirect to={PATHS.login} />}
@@ -15,3 +15,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home;

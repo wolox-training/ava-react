@@ -9,7 +9,7 @@ interface FormScreenProps {
   children: ReactNode
 }
 
-export default function FormScreen({ children }: FormScreenProps) {
+function FormScreen({ children }: FormScreenProps) {
   return (
     <div className={styles.formScreenLayout}>
       <main className={styles.formContainer}>
@@ -20,3 +20,5 @@ export default function FormScreen({ children }: FormScreenProps) {
     </div>
   )
 }
+
+export default FormScreen;

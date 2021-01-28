@@ -13,18 +13,18 @@ import PATHS from '../../../../components/Routes/paths';
 import styles from './styles.module.scss';
 import { UserData } from './types';
 
-import { postUser, SIGN_UP } from '../../../../../services/userService';
+import { signUp } from '../../../../../services/userService';
 import { useLazyRequest } from '../../../../../hooks/useRequest';
 
-export default function SignUpForm() {
+function SignUpForm() {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(SIGN_UP, data),
+    request: (data: UserData) => signUp(data),
   })
 
-  const signUp = (formData: UserData) => {
+  const onSubmit = (formData: UserData) => {
     if (formData) {
       const data = { ...formData, locale: navigator.language };
 
@@ -35,7 +35,7 @@ export default function SignUpForm() {
   return (
     userData ?
       <Redirect to={PATHS.home} /> :
-      <Form className={styles.signUpForm} handleSubmit={handleSubmit(signUp)}>
+      <Form className={styles.signUpForm} handleSubmit={handleSubmit(onSubmit)}>
         <FormRow
           labelName={t('SignUpForm:UserFormFirstName')}
           className={styles.formRow}
@@ -118,3 +118,5 @@ export default function SignUpForm() {
       </Form>
   );
 }
+
+export default SignUpForm;

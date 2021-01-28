@@ -10,14 +10,14 @@ interface ButtonProps {
   handleClick?: () => void;
 }
 
-export default function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick }: ButtonProps) {
+function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick }: ButtonProps) {
 
   return (
     <button
       type={isSubmit ? 'submit' : 'button'}
       onClick={handleClick}
       className={clsx(
-        'button',
+        'primary-btn',
         className,
         {
           ['filled']: isFilled,
@@ -29,3 +29,5 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
     </button>
   );
 }
+
+export default Button;

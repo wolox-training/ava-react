@@ -13,7 +13,7 @@ import ErrorMessage from '../../../../components/ErrorMessage';
 import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
-import { LOGIN, postUser } from '../../../../../services/userService';
+import { login } from '../../../../../services/userService';
 import useSession from '../../../../../hooks/useSession';
 
 
@@ -22,16 +22,16 @@ interface UserData {
   password?: string;
 }
 
-export default function LoginForm() {
+function LoginForm() {
   const { t } = useTranslation();
   const { startSession } = useSession();
   const { errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(LOGIN, data, startSession),
+    request: (data: UserData) => login(data),
   })
 
-  const login = (formData: UserData) => {
+  const onSubmit = (formData: UserData) => {
     if (formData) {
       request(formData)
     }
@@ -40,7 +40,7 @@ export default function LoginForm() {
   return (
     userData ?
     <Redirect to={PATHS.home} /> :
-    <Form className={styles.loginForm} handleSubmit={handleSubmit(login)}>
+    <Form className={styles.loginForm} handleSubmit={handleSubmit(onSubmit)}>
       <FormRow
         labelName={t('LoginForm:UserFormEmail')}
         className={styles.formRow}
@@ -73,11 +73,14 @@ export default function LoginForm() {
       {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
 
       {
-        loading ? (<div className={styles.loading}> <Loading isGreen /> </div>)
-          :<Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
+        loading ? 
+          <div className={styles.loading}> <Loading isGreen /> </div>
+          : <Button isFilled isSubmit> {t('Common:LoginButton')} </Button>
       }
 
       
     </Form>
   );
 }
+
+export default LoginForm;
