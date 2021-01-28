@@ -71,8 +71,9 @@ function LoginForm() {
       {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
 
       {
-        loading ? (<div className={styles.loading}> <Loading isGreen /> </div>)
-          :<Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
+        loading ? 
+          <div className={styles.loading}> <Loading isGreen /> </div>
+          : <Button isFilled isSubmit> {t('Common:LoginButton')} </Button>
       }
 
       
