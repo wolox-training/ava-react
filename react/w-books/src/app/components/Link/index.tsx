@@ -7,14 +7,14 @@ interface LinkButtonProps {
   className?: string;
   isFilled?: boolean;
   isWidthAuto?: boolean;
-  to?: string;
+  to: string;
 }
 
 function LinkButton({ children, className, isFilled, isWidthAuto, to }: LinkButtonProps) {
 
   return (
     <Link
-      to={to ?? '/'}
+      to={to}
       className={
         clsx(
           'primary-btn',
