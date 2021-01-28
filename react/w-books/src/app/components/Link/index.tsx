@@ -17,7 +17,7 @@ function LinkButton({ children, className, isFilled, isWidthAuto, to }: LinkButt
       to={to ?? '/'}
       className={
         clsx(
-          'button',
+          'primary-btn',
           className,
           {
             ['filled']: isFilled,

@@ -17,7 +17,7 @@ function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleCl
       type={isSubmit ? 'submit' : 'button'}
       onClick={handleClick}
       className={clsx(
-        'button',
+        'primary-btn',
         className,
         {
           ['filled']: isFilled,
