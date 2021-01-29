@@ -6,11 +6,12 @@ import PATHS from '../Routes/paths';
 
 import styles from './styles.module.scss';
 
-import useSession from '../../../hooks/useSession';
+import { deleteData, SESSION } from '~utils/manageData';
 
-export default function Navbar() {
-  const { stopSession } = useSession();
+function Navbar() {
   const { t } = useTranslation();
+  
+  const stopSession = () => deleteData(SESSION);
 
   return (
     <nav className={styles.nav}>
@@ -25,3 +26,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar;

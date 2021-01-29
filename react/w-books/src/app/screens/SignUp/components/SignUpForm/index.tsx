@@ -13,23 +13,24 @@ import PATHS from '../../../../components/Routes/paths';
 import styles from './styles.module.scss';
 import { UserData } from './types';
 
-import { postUser, SIGN_UP } from '../../../../../services/userService';
+import { signUp } from '../../../../../services/userService';
 import { useLazyRequest } from '../../../../../hooks/useRequest';
+import { saveData, SESSION } from '../../../../../utils/manageData';
 
 interface SignUpFormProps {
   testId?: string;
   handleSignUp?: (formData: UserData) => void;
 }
 
-export default function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
+function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(SIGN_UP, data),
+    request: (data: UserData) => signUp(data, setSession),
   })
 
-  const signUp = (formData: UserData) => {
+  const onSubmit = (formData: UserData) => {
     if (formData) {
       const data = { ...formData, locale: navigator.language };
 
@@ -37,10 +38,12 @@ export default function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
     }
   }
 
+  const setSession = (session:string)=> saveData(SESSION, session); 
+
   return (
     userData ?
       <Redirect to={PATHS.home} /> :
-      <Form className={styles.signUpForm} handleSubmit={handleSubmit(handleSignUp ?? signUp)} testId={testId}>
+      <Form className={styles.signUpForm} handleSubmit={handleSubmit(handleSignUp ?? onSubmit)} testId={testId}>
         <FormRow
           labelName={t('SignUpForm:UserFormFirstName')}
           className={styles.formRow}
@@ -123,3 +126,5 @@ export default function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
       </Form>
   );
 }
+
+export default SignUpForm;

@@ -13,7 +13,7 @@ interface Route {
   private?: boolean;
 }
 
-const ROUTES: Route[] = [
+export const ROUTES: Route[] = [
   {
     exact: true,
     path: PATHS.login,
@@ -35,5 +35,3 @@ const ROUTES: Route[] = [
     private: true
   }
 ];
-
-export { ROUTES };

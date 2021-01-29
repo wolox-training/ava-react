@@ -1,27 +1,13 @@
 export const SESSION = 'SESSION';
 
-const saveData = (key: typeof SESSION, value: any) => {
-  if (typeof localStorage !== 'undefined') {
-    const data = JSON.stringify(value);
-    localStorage.setItem(key, data);
-  }
+export const saveData = (key: typeof SESSION, value: any) => localStorage.setItem(key, JSON.stringify(value));
+
+export const getData = (key: typeof SESSION) => {
+  const data = localStorage.getItem(key);
+
+  return data ? JSON.parse(data) : null;
 };
 
-const getData = (key: typeof SESSION) => {
-  if (typeof localStorage !== 'undefined') {
-    let data = localStorage.getItem(key);
+export const deleteData = (key: typeof SESSION) => localStorage.removeItem(key);
 
-    if (data) {
-      return JSON.parse(data);
-    }
-  }
-  return null;
-};
-
-const deleteData = (key: typeof SESSION) => {
-  if (typeof localStorage !== 'undefined') {
-    localStorage.removeItem(key);
-  }
-};
-
-export { getData, saveData, deleteData };
+export const hasData = (key: typeof SESSION):boolean => (localStorage.getItem(key) !== null);
