@@ -8,7 +8,7 @@ interface CardListProps {
   items: iCard[]
 }
 
-export default function CardList({ items }: CardListProps) {
+function CardList({ items }: CardListProps) {
   return (
     <div className={styles.cardList}>
       {items.map(item =>
@@ -24,3 +24,5 @@ export default function CardList({ items }: CardListProps) {
     </div>
   )
 }
+
+export default CardList;

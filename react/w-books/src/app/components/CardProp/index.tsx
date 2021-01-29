@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react'
+import Card from '~components/Card';
 
 import styles from './styles.module.scss';
 
@@ -14,7 +15,7 @@ interface CardPropProps extends iCardProp {
   isSimple?: boolean;
 }
 
-export default function CardProp({ className, propName, value, isSimple, keepVisibleSimple }: CardPropProps) {
+function CardProp({ className, propName, value, isSimple, keepVisibleSimple }: CardPropProps) {
   return (
     <div className={
       clsx(styles.cardProp, className, {
@@ -29,3 +30,5 @@ export default function CardProp({ className, propName, value, isSimple, keepVis
     </div>
   )
 }
+
+export default CardProp;

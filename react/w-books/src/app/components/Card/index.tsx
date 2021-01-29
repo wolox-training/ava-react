@@ -15,7 +15,7 @@ interface CardProps extends iCard {
   isSimple?: boolean;
 }
 
-export default function Card({
+function Card({
   isSimple,
   imageUrl,
   id,
@@ -58,3 +58,5 @@ export default function Card({
     </a>
   )
 }
+
+export default Card;

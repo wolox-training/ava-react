@@ -1,4 +1,4 @@
-export default interface Book {
+interface Book {
   id: number;
   author: string;
   title: string;
@@ -9,3 +9,5 @@ export default interface Book {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export default Book;
