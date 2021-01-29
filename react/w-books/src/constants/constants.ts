@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-const LANGS: i18next.Resource = {
+export const LANGS: i18next.Resource = {
   en: {
     translation: {
       "LanguageName": "English",
@@ -17,6 +17,4 @@ const LANGS: i18next.Resource = {
   }
 };
 
-const DEFAULT_LANG = 'es';
-
-export { LANGS, DEFAULT_LANG };
+export const DEFAULT_LANG = 'es';

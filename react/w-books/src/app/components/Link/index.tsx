@@ -7,17 +7,17 @@ interface LinkButtonProps {
   className?: string;
   isFilled?: boolean;
   isWidthAuto?: boolean;
-  to?: string;
+  to: string;
 }
 
-export default function LinkButton({ children, className, isFilled, isWidthAuto, to }: LinkButtonProps) {
+function LinkButton({ children, className, isFilled, isWidthAuto, to }: LinkButtonProps) {
 
   return (
     <Link
-      to={to ?? '/'}
+      to={to}
       className={
         clsx(
-          'button',
+          'primary-btn',
           className,
           {
             ['filled']: isFilled,
@@ -27,3 +27,5 @@ export default function LinkButton({ children, className, isFilled, isWidthAuto,
     > {children}</Link >
   );
 }
+
+export default LinkButton;

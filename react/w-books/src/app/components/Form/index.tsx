@@ -7,7 +7,7 @@ interface FormProps {
   testId?: string;
 }
 
-export default function Form({ handleSubmit, className, children, testId }: FormProps) {
+function Form({ handleSubmit, className, children, testId }: FormProps) {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -20,3 +20,5 @@ export default function Form({ handleSubmit, className, children, testId }: Form
     </form>
   );
 }
+
+export default Form;

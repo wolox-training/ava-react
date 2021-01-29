@@ -7,7 +7,7 @@ import LinkButton from '../../components/Link';
 
 import LoginForm from './components/LoginForm';
 
-export default function index() {
+function Login() {
   const { t } = useTranslation();
 
   return (
@@ -17,3 +17,5 @@ export default function index() {
     </FormScreen>
   );
 }
+
+export default Login;

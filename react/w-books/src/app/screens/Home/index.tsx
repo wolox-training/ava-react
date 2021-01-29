@@ -2,16 +2,16 @@ import React from 'react'
 import { Redirect } from 'react-router';
 import Navbar from '../../components/Navbar'
 import PATHS from '../../components/Routes/paths';
+import { hasData, SESSION } from '../../../utils/manageData';
 
-import useSession from '../../../hooks/useSession';
-
-export default function Home() {
-  const { isLogged } = useSession();
-
+function Home() {
+  
   return (
     <>
-      {!isLogged() && <Redirect to={PATHS.login} />}
+      {!hasData(SESSION) && <Redirect to={PATHS.login} />}
       <Navbar />
     </>
   )
 }
+
+export default Home;
