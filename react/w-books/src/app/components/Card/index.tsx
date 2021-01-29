@@ -12,7 +12,7 @@ export interface iCard {
   title?: string;
   subtitle?: string;
   to?: string;
-  properties: iCardProp[];
+  properties?: iCardProp[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -56,7 +56,7 @@ function Card({
       <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>({subtitle})</span>
 
       <div className={styles.cardProps}>
-        {properties.map(prop =>
+        {properties && properties.map(prop =>
           <CardProp
             key={`CardProp-${prop.propName}`}
             propName={translateProps ? t(prop.propName) : prop.propName}
