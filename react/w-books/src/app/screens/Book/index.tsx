@@ -13,7 +13,6 @@ import PATHS from '../../components/Routes/paths';
 import Card from '../../components/Card';
 import ButtonLanguage from '../../components/ButtonLanguage';
 import ErrorMessage from '../../components/ErrorMessage';
-import withLoading from '../../components/Loading';
 import { getData, SESSION } from '../../../utils/manageData';
 
 interface BookProps {
@@ -36,15 +35,13 @@ function Book({ match: urlParams }: BookProps) {
         <aside className={styles.aside}>
           <ButtonBack path={PATHS.home} />
         </aside>
-        {
-          withLoading(Card)({
-            loading,
-            loadingClassName: styles.container,
-            className: styles.bookCard,
-            translateProps: true,
-            ...bookToCard(book)
-          })
-        }
+        <Card
+          loading={loading}
+          loadingClassName={styles.container}
+          className={styles.bookCard}
+          translateProps={true}
+          {...bookToCard(book)}
+        />
       </div>
 
       {error && (<ErrorMessage className={styles.container}>{t(`Book:${error.problem}`)}</ErrorMessage>)}

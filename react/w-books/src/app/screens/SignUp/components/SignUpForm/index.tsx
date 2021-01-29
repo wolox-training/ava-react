@@ -6,7 +6,6 @@ import { Redirect } from 'react-router';
 import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
-import withLoading from '../../../../components/Loading';
 import ErrorMessage from '../../../../components/ErrorMessage';
 import PATHS from '../../../../components/Routes/paths';
 
@@ -23,7 +22,7 @@ interface SignUpFormProps {
   handleSignUp?: (formData: UserData) => void;
 }
 
-function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
+function SignUpForm({ testId, handleSignUp }: SignUpFormProps) {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
@@ -39,7 +38,7 @@ function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
     }
   }
 
-  const setSession = (session:Session)=> saveData(SESSION, session); 
+  const setSession = (session: Session) => saveData(SESSION, session);
 
   return (
     userData ?
@@ -119,15 +118,14 @@ function SignUpForm({testId, handleSignUp}:SignUpFormProps) {
 
         {error && (<ErrorMessage>{t(`SignUpForm:${error.problem}`)}</ErrorMessage>)}
 
-        {
-          withLoading(Button)({
-            loading,
-            loadingClassName: styles.loading,
-            isFilled:true, 
-            isSubmit:true,
-            children: t('Common:SignUpButton'),
-          })
-        }
+        <Button
+          loading={loading}
+          loadingClassName={styles.loading}
+          isFilled
+          isSubmit
+        >
+          {t('Common:SignUpButton')}
+        </Button>
 
       </Form>
   );

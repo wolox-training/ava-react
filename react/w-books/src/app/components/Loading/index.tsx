@@ -15,7 +15,7 @@ function Loading({ className}: LoadingProps): JSX.Element {
 }
 
 interface WithLoadingProps {
-  loading: boolean;
+  loading?: boolean;
   loadingClassName?: string;
 }
 

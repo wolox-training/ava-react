@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Redirect } from 'react-router-dom';
 
 import { useRequest } from '../../../hooks/useRequest';
 import { getBooks } from '../../../services/booksService';
@@ -8,9 +7,7 @@ import { getData, hasData, SESSION } from '../../../utils/manageData';
 
 import Navbar from '../../components/Navbar';
 import ErrorMessage from '../../components/ErrorMessage';
-import withLoading from '../../components/Loading';
 import CardList from '../../components/CardList';
-import PATHS from '../../components/Routes/paths';
 
 import styles from './styles.module.scss';
 import { bookToCard } from '../../../utils/bookToCard';
@@ -29,14 +26,12 @@ function Home() {
 
       {error && (<ErrorMessage className={styles.container}>{t(`Home:${error.problem}`)}</ErrorMessage>)}
 
-      {
-        withLoading(CardList)({
-          loading,
-          loadingClassName: styles.container,
-          items: response?.page ? response.page.map(bookToCard) : []
-        })
-      }
-      
+      <CardList
+        loading={loading}
+        loadingClassName={styles.container}
+        items={response?.page ? response.page.map(bookToCard) : []}
+      />
+
       <ButtonLanguage className={styles.languagesContainer} />
     </>
   )

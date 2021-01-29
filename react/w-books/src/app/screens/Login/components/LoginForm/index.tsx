@@ -7,7 +7,6 @@ import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
 import PATHS from '../../../../components/Routes/paths';
-import withLoading from '../../../../components/Loading';
 import ErrorMessage from '../../../../components/ErrorMessage';
 
 import styles from './styles.module.scss';
@@ -78,15 +77,14 @@ function LoginForm({ testId, handleLogin }: LoginFormProps) {
 
         {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
 
-        {
-          withLoading(Button)({
-            loading,
-            loadingClassName: styles.loading,
-            isFilled:true, 
-            isSubmit:true,
-            children: t('Common:LoginButton'),
-          })
-        }
+        <Button
+          loading={loading}
+          loadingClassName={styles.loading}
+          isFilled
+          isSubmit
+        >
+          {t('Common:LoginButton')}
+        </Button>
 
       </Form>
   );
