@@ -9,3 +9,5 @@ export const getData = (key: typeof SESSION) => {
 };
 
 export const deleteData = (key: typeof SESSION) => localStorage.removeItem(key);
+
+export const hasData = (key: typeof SESSION):boolean => (localStorage.getItem(key) !== null);

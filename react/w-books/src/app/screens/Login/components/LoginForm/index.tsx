@@ -14,8 +14,8 @@ import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
 import { login } from '../../../../../services/userService';
-import useSession from '../../../../../hooks/useSession';
-
+import { Session } from 'inspector';
+import { saveData, SESSION } from '~utils/manageData';
 
 interface UserData {
   email?: string;
@@ -24,11 +24,10 @@ interface UserData {
 
 function LoginForm() {
   const { t } = useTranslation();
-  const { startSession } = useSession();
   const { errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => login(data),
+    request: (data: UserData) => login(data, setSession),
   })
 
   const onSubmit = (formData: UserData) => {
@@ -36,6 +35,8 @@ function LoginForm() {
       request(formData)
     }
   }
+
+  const setSession = (session:string)=> saveData(SESSION, session); 
 
   return (
     userData ?

@@ -15,13 +15,14 @@ import { UserData } from './types';
 
 import { signUp } from '../../../../../services/userService';
 import { useLazyRequest } from '../../../../../hooks/useRequest';
+import { saveData, SESSION } from '~utils/manageData';
 
 function SignUpForm() {
   const { t } = useTranslation();
   const { watch, errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => signUp(data),
+    request: (data: UserData) => signUp(data, setSession),
   })
 
   const onSubmit = (formData: UserData) => {
@@ -31,6 +32,8 @@ function SignUpForm() {
       request(data);
     }
   }
+
+  const setSession = (session:string)=> saveData(SESSION, session); 
 
   return (
     userData ?
