@@ -1,7 +1,9 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import { Route, Redirect } from 'react-router-dom';
-import PATHS from '~components/Routes/paths';
-import useSession from '../../../../../hooks/useSession';
+
+import PATHS from '../../../../components/Routes/paths';
+
+import { hasData, SESSION } from '../../../../../utils/manageData';
 
 interface PrivateRoute {
   component: React.ElementType;
@@ -9,16 +11,16 @@ interface PrivateRoute {
   exact: boolean;
 }
 
-export default function PrivateRoute({ component: Component, path, exact }: PrivateRoute) {
-  const { isLogged } = useSession();
-
+function PrivateRoute({ component: Component, path, exact }: PrivateRoute) {
   return (
     <Route
       exact={exact}
       path={path}
       render={(props) =>
-        isLogged() ? <Component {...props} /> : <Redirect to={PATHS.login} />
+        hasData(SESSION) ? <Component {...props} /> : <Redirect to={PATHS.login} />
       }
     />
   );
 }
+
+export default PrivateRoute;

@@ -18,7 +18,7 @@ const cases = [
       expect(loginData).toEqual(initialData);
     },
     data: {
-      email: 'agustin.vazquez@wolox.com.ar',
+      email: 'test@test.com',
       password: '123456',
       password_confirmation: '123456',
       first_name: 'Agustin',
@@ -46,7 +46,7 @@ const cases = [
       expect(formElement).toHaveTextContent('FormValidation:MinLength');
     },
     data: {
-      email: 'agustin.vazquez@wolox.com.ar',
+      email: 'test@test.com',
       password: '123',
       password_confirmation: '123456',
       first_name: 'Agustin',
@@ -60,7 +60,7 @@ const cases = [
       expect(formElement).toHaveTextContent('FormValidation:MaxLength');
     },
     data: {
-      email: 'agustin.vazquez@wolox.com.ar',
+      email: 'test@test.com',
       password: '123456',
       password_confirmation: '123456',
       first_name: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, ducimus ut quam laboriosam hic nam placeat quidem? Iure, voluptas quaerat. Voluptatem suscipit nam architecto, praesentium aliquam quae! Corporis, soluta dolore!',
@@ -74,7 +74,7 @@ const cases = [
       expect(formElement).toHaveTextContent('FormValidation:MaxLength');
     },
     data: {
-      email: 'agustin.vazquez@wolox.com.ar',
+      email: 'test@test.com',
       password: '123456',
       password_confirmation: '123456',
       first_name: 'Agustin',
@@ -88,7 +88,7 @@ const cases = [
       expect(formElement).toHaveTextContent('FormValidation:Validate');
     },
     data: {
-      email: 'agustin.vazquez@wolox.com.ar',
+      email: 'test@test.com',
       password: '123456',
       password_confirmation: '123456x',
       first_name: 'Agustin',
