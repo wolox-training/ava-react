@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 
 import { deleteData, SESSION } from '~utils/manageData';
 
-export default function Navbar() {
+function Navbar() {
   const { t } = useTranslation();
   
   const stopSession = () => deleteData(SESSION);
@@ -26,3 +26,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar;
