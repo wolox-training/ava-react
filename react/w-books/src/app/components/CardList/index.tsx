@@ -8,19 +8,17 @@ interface CardListProps {
   items: iCard[]
 }
 
-export default function CardList({ items }: CardListProps) {
+function CardList({ items }: CardListProps) {
   return (
     <div className={styles.cardList}>
       {items.map(item =>
         <Card
-          imageUrl={item.imageUrl}
-          id={item.id}
-          title={item.title}
-          subtitle={item.subtitle}
-          to={item.to}
-          props={item.props}
+          key={`Card-${item.id}`}
           isSimple
+          {...item}
         />)}
     </div>
   )
 }
+
+export default CardList;

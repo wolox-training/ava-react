@@ -4,12 +4,10 @@ import PATHS from "../app/components/Routes/paths";
 
 export function bookToCard(book: Book): iCard {
   return {
-    id: book.id,
-    imageUrl: book.imageUrl,
-    title: book.title,
+    ...book,
     subtitle: book.genre,
     to: PATHS.book.replace(':id', `${book.id}`),
-    props: [
+    properties: [
       {
         propName: 'Book:AuthorLabel',
         value: book.author,

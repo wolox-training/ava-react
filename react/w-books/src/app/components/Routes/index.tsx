@@ -4,7 +4,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import { ROUTES } from './constants';
 
-export default function Routes() {
+function Routes() {
   return (
     <React.Suspense fallback="Cargando...">
       <BrowserRouter>
@@ -12,8 +12,8 @@ export default function Routes() {
           {
             ROUTES.map(route => 
               route.private ? 
-              <PrivateRoute component={route.component} path={route.path} exact={route.exact}/> :
-              <PublicRoute component={route.component} path={route.path} exact={route.exact} restricted={route.restricted}/>
+              <PrivateRoute key={route.path} component={route.component} path={route.path} exact={route.exact}/> :
+              <PublicRoute key={route.path} component={route.component} path={route.path} exact={route.exact} restricted={route.restricted}/>
             )
           }
         </Switch>
@@ -21,3 +21,5 @@ export default function Routes() {
     </React.Suspense>
   )
 }
+
+export default Routes;

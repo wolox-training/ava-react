@@ -12,7 +12,7 @@ export interface iCard {
   title: string;
   subtitle: string;
   to?: string;
-  props: iCardProp[];
+  properties: iCardProp[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -20,7 +20,7 @@ interface CardProps extends iCard {
   translateProps?: boolean;
 }
 
-export default function Card({
+function Card({
   isSimple,
   translateProps,
   className,
@@ -29,10 +29,10 @@ export default function Card({
   title,
   subtitle,
   to,
-  props
+  properties
 }: CardProps) {
   const { t } = useTranslation();
-  
+
   return (
     <Link className={
       clsx(
@@ -56,8 +56,9 @@ export default function Card({
       <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>({subtitle})</span>
 
       <div className={styles.cardProps}>
-        {props.map(prop =>
+        {properties.map(prop =>
           <CardProp
+            key={`CardProp-${prop.propName}`}
             propName={translateProps ? t(prop.propName) : prop.propName}
             value={prop.value}
             className={styles.cardProp}
@@ -69,3 +70,5 @@ export default function Card({
     </Link>
   )
 }
+
+export default Card;

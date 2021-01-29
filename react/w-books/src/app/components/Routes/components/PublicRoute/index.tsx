@@ -1,9 +1,9 @@
 import React, { Component, FunctionComponent, ReactNode } from 'react'
 import { Route, Redirect } from 'react-router-dom';
 
-import useSession from '../../../../../hooks/useSession';
+import PATHS from '../../../../components/Routes/paths';
 
-import PATHS from '../../paths';
+import { hasData, SESSION } from '../../../../../utils/manageData';
 
 interface PublicRouteProps {
   component: React.ElementType;
@@ -12,15 +12,13 @@ interface PublicRouteProps {
   exact: boolean;
 }
 
-export default function PublicRoute({ component: Component, restricted, path, exact }: PublicRouteProps) {
-  const { isLogged } = useSession();
-
+function PublicRoute({ component: Component, restricted, path, exact }: PublicRouteProps) {
   return (
     <Route
       path={path}
       exact={exact}
       render={(props) =>
-        isLogged() && restricted ? (
+        hasData(SESSION) && restricted ? (
           <Redirect to={PATHS.home} />
         ) : (
             <Component {...props} />
@@ -29,3 +27,5 @@ export default function PublicRoute({ component: Component, restricted, path, ex
     />
   );
 }
+
+export default PublicRoute;
