@@ -20,7 +20,7 @@ interface BookProps {
   match: match<{ id: string }>;
 }
 
-export default function Book({ match: urlParams }: BookProps) {
+function Book({ match: urlParams }: BookProps) {
   const { t } = useTranslation();
 
   const bookId = urlParams.params.id;
@@ -53,3 +53,5 @@ export default function Book({ match: urlParams }: BookProps) {
     </>
   )
 }
+
+export default Book;
