@@ -4,8 +4,15 @@ import api, { setSession } from '../config/api';
 
 export async function getBooks(
   session: Session,
-  id?: string,
 ): Promise<ApiResponse<any, any>> {
   setSession(session);
-  return api.get(id ? `books/${id}` : 'books');
+  return api.get('books');
+}
+
+export async function getBook(
+  session: Session,
+  id: string,
+): Promise<ApiResponse<any, any>> {
+  setSession(session);
+  return api.get(`books/${id}`);
 }
