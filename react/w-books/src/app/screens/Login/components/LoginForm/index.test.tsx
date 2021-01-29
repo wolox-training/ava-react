@@ -9,7 +9,7 @@ import { act } from 'react-dom/test-utils';
 import LoginForm from './';
 
 const CorrectUserData = {
-  email: 'agustin.vazquez@wolox.com.ar',
+  email: 'test@test.com',
   password: '123456'
 };
 
@@ -19,7 +19,7 @@ const InvalidCase1UserData = {
 };
 
 const InvalidCase2UserData = {
-  email: '********$%a#@wolox.com.ar',
+  email: '********$%a#@test.com',
   password: '1ABC23'
 };
 

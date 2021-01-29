@@ -13,8 +13,9 @@ import ErrorMessage from '../../../../components/ErrorMessage';
 import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
-import { LOGIN, postUser } from '../../../../../services/userService';
-import useSession from '../../../../../hooks/useSession';
+import { login } from '../../../../../services/userService';
+import { saveData, SESSION } from '../../../../../utils/manageData';
+import Session from '../../../../../types/Session';
 
 interface UserData {
   email?: string;
@@ -26,25 +27,26 @@ interface LoginFormProps {
   handleLogin?: (formData: UserData) => void;
 }
 
-export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
+function LoginForm({ testId, handleLogin }: LoginFormProps) {
   const { t } = useTranslation();
-  const { startSession } = useSession();
   const { errors, register, handleSubmit } = useForm<UserData>();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(LOGIN, data, startSession),
+    request: (data: UserData) => login(data, setSession),
   })
 
-  const login = (formData: UserData): void => {
+  const onSubmit = (formData: UserData) => {
     if (formData) {
       request(formData)
     }
   }
 
+  const setSession = (session: Session) => saveData(SESSION, session);
+
   return (
     userData ?
       <Redirect to={PATHS.home} /> :
-      <Form className={styles.loginForm} handleSubmit={handleSubmit(handleLogin ?? login)} testId={testId}>
+      <Form className={styles.loginForm} handleSubmit={handleSubmit(handleLogin ?? onSubmit)} testId={testId}>
         <FormRow
           labelName={t('LoginForm:UserFormEmail')}
           className={styles.formRow}
@@ -77,11 +79,13 @@ export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
         {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
 
         {
-          loading ? (<div className={styles.loading}> <Loading isGreen /> </div>)
-            : <Button isFilled isSubmit>{t('Common:LoginButton')}</Button>
+          loading ?
+            <div className={styles.loading}> <Loading isGreen /> </div>
+            : <Button isFilled isSubmit> {t('Common:LoginButton')} </Button>
         }
-
 
       </Form>
   );
 }
+
+export default LoginForm;
