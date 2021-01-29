@@ -3,11 +3,9 @@ import { iCard } from '../../components/Card';
 
 export function mapToCards(books: Book[]):iCard[] {
   return books ? books.map(book => ({
-    id: book.id,
-    imageUrl: book.imageUrl,
-    title: book.title,
+    ...book,
     subtitle: book.genre,
-    props: [
+    properties: [
       {
         propName: 'Autor del libro: ',
         value: book.author,

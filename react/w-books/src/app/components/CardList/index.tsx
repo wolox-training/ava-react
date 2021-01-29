@@ -14,12 +14,8 @@ function CardList({ items }: CardListProps) {
       {items.map(item =>
         <Card
           key={`Card-${item.id}`}
-          imageUrl={item.imageUrl}
-          id={item.id}
-          title={item.title}
-          subtitle={item.subtitle}
-          props={item.props}
           isSimple
+          {...item}
         />)}
     </div>
   )

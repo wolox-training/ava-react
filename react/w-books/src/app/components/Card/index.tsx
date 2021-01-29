@@ -9,7 +9,7 @@ export interface iCard {
   id: number;
   title: string;
   subtitle: string;
-  props: iCardProp[];
+  properties: iCardProp[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -21,7 +21,7 @@ function Card({
   id,
   title,
   subtitle,
-  props
+  properties
 }: CardProps) {
   return (
     <a className={
@@ -44,7 +44,7 @@ function Card({
       <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>({subtitle})</span>
 
       <div className={styles.cardProps}>
-        {props.map(prop =>
+        {properties.map(prop =>
           <CardProp
             key={`CardProp-${prop.propName}`}
             propName={prop.propName}
