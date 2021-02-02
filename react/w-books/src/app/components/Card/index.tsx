@@ -1,5 +1,7 @@
 import clsx from 'clsx';
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import CardProp, { iCardProp } from '../CardProp';
 
 import styles from './styles.module.scss';
@@ -24,11 +26,11 @@ function Card({
   properties
 }: CardProps) {
   return (
-    <a className={
+    <Link className={
       clsx(styles.card, {
         [styles.cardSimple]: isSimple
       })
-    } href="/">
+    } to="/">
       <div className={clsx(styles.cardCover, styles.badge)}>
         <img
           src={imageUrl}
@@ -55,7 +57,7 @@ function Card({
           />)}
       </div>
 
-    </a>
+    </Link>
   )
 }
 
