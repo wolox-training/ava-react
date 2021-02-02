@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CardProp, { iCardProp } from '../CardProp';
+import CardProperty, { iCardProperty } from '../CardProperty';
 
 import styles from './styles.module.scss';
 
@@ -11,7 +11,7 @@ export interface iCard {
   id: number;
   title: string;
   subtitle: string;
-  properties: iCardProp[];
+  properties: iCardProperty[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -47,8 +47,8 @@ function Card({
 
       <div className={styles.cardProps}>
         {properties.map(prop =>
-          <CardProp
-            key={`CardProp-${prop.propName}`}
+          <CardProperty
+            key={`CardProperty-${prop.propName}`}
             propName={prop.propName}
             value={prop.value}
             className={styles.cardProp}

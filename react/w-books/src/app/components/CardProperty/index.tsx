@@ -4,18 +4,18 @@ import Card from '~components/Card';
 
 import styles from './styles.module.scss';
 
-export interface iCardProp {
+export interface iCardProperty {
   keepVisibleSimple?: boolean;
   propName: string;
   value: string;
 }
 
-interface CardPropProps extends iCardProp {
+interface CardPropertyProps extends iCardProperty {
   className?: string;
   isSimple?: boolean;
 }
 
-function CardProp({ className, propName, value, isSimple, keepVisibleSimple }: CardPropProps) {
+function CardProperty({ className, propName, value, isSimple, keepVisibleSimple }: CardPropertyProps) {
   return (
     <div className={
       clsx(styles.cardProp, className, {
@@ -31,4 +31,4 @@ function CardProp({ className, propName, value, isSimple, keepVisibleSimple }: C
   )
 }
 
-export default CardProp;
+export default CardProperty;
