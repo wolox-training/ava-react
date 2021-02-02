@@ -9,7 +9,6 @@ interface Route {
   exact: boolean;
   path: string;
   component: FunctionComponent;
-  restricted?: boolean;
   private?: boolean;
 }
 
@@ -18,14 +17,12 @@ export const ROUTES: Route[] = [
     exact: true,
     path: PATHS.login,
     component: Login,
-    restricted: true,
     private: false
   },
   {
     exact: true,
     path: PATHS.signUp,
     component: SignUp,
-    restricted: true,
     private: false
   },
   {
