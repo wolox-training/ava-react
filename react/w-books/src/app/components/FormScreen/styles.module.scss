@@ -1,12 +1,13 @@
 @import '../../../scss/colors';
 
-.sign-up-layout {
+.form-screen-layout {
   align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-rows: auto 10vh;
   justify-content: center;
   min-height: 100vh;
 
-  .sign-up-container {
+  .form-container {
     background-color: $wild-sand;
     border-top: 6px solid $cerulean;
     display: grid;
@@ -19,5 +20,10 @@
       justify-self: center;
       width: 210px;
     }
+  }
+
+  .languages-container {
+    justify-self: center;
+    display: flex;
   }
 }

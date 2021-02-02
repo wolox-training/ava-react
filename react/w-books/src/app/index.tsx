@@ -1,9 +1,11 @@
 import React from 'react';
 
-import '../scss/application.scss';
+import Routes from './components/Routes';
 
 function App() {
-  return <h1>React training WBooks</h1>;
+  return (
+    <Routes/>
+  );
 }
 
 export default App;
