@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import CardProp, { iCardProp } from '../CardProp';
+import CardProperty, { iCardProperty } from '../CardProperty';
 
 import styles from './styles.module.scss';
 
@@ -11,8 +11,8 @@ export interface iCard {
   id: number;
   title: string;
   subtitle: string;
-  to?: string;
-  properties: iCardProp[];
+  to: string;
+  properties: iCardProperty[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -40,7 +40,7 @@ function Card({
         className, {
         [styles.cardSimple]: isSimple
       })
-    } to={to ?? ''}>
+    } to={to}>
       <div className={clsx(styles.cardCover, styles.badge)}>
         <img
           src={imageUrl}
@@ -57,8 +57,8 @@ function Card({
 
       <div className={styles.cardProps}>
         {properties.map(prop =>
-          <CardProp
-            key={`CardProp-${prop.propName}`}
+          <CardProperty
+            key={`CardProperty-${prop.propName}`}
             propName={translateProps ? t(prop.propName) : prop.propName}
             value={prop.value}
             className={styles.cardProp}
