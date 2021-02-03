@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
+import withLoading from '../Loading';
 
 interface ButtonProps {
   children: ReactNode;
@@ -11,15 +12,14 @@ interface ButtonProps {
   testId?: string;
 }
 
-export default function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick, testId }: ButtonProps) {
-
+function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleClick, testId }: ButtonProps) {
   return (
     <button
       type={isSubmit ? 'submit' : 'button'}
       onClick={handleClick}
       data-testid={testId}
       className={clsx(
-        'button',
+        'primary-btn',
         className,
         {
           ['filled']: isFilled,
@@ -31,3 +31,5 @@ export default function Button({ children, isSubmit, className, isFilled, isWidt
     </button>
   );
 }
+
+export default withLoading(Button);

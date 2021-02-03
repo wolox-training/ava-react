@@ -4,12 +4,10 @@ import PATHS from "../app/components/Routes/paths";
 
 export function bookToCard(book: Book): iCard {
   return book ? {
-    id: book.id,
-    imageUrl: book.imageUrl,
-    title: book.title,
+    ...book,
     subtitle: book.genre,
     to: PATHS.book.replace(':id', `${book.id}`),
-    props: [
+    properties: [
       {
         propName: 'Book:AuthorLabel',
         value: book.author,
@@ -24,5 +22,12 @@ export function bookToCard(book: Book): iCard {
         value: `${book.year}`,
       }
     ]
-  }:{};
+  } : {
+    id: 0,
+    title: '',
+    to: PATHS.home,
+    subtitle: '',
+    imageUrl: '',    
+    properties: [],
+  };
 }

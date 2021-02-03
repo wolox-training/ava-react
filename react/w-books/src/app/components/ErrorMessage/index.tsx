@@ -8,10 +8,12 @@ interface ErrorMessageProps {
   className?: string;
 }
 
-export default function ErrorMessage({ children, className }: ErrorMessageProps) {
+function ErrorMessage({children, className}:ErrorMessageProps) {
   return (
     <div className={clsx(styles.errorMessage, className)}>
       {children}
     </div>
   )
 }
+
+export default ErrorMessage;

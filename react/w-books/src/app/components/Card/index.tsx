@@ -2,17 +2,18 @@ import clsx from 'clsx';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import CardProp, { iCardProp } from '../CardProp';
+import withLoading from '../Loading';
+import CardProperty, { iCardProperty } from '../CardProperty';
 
 import styles from './styles.module.scss';
 
 export interface iCard {
-  imageUrl?: string;
-  id?: number;
-  title?: string;
-  subtitle?: string;
-  to?: string;
-  props?: iCardProp[];
+  imageUrl: string;
+  id: number;
+  title: string;
+  subtitle: string;
+  to: string;
+  properties: iCardProperty[];
 }
 interface CardProps extends iCard {
   isSimple?: boolean;
@@ -20,7 +21,7 @@ interface CardProps extends iCard {
   translateProps?: boolean;
 }
 
-export default function Card({
+function Card({
   isSimple,
   translateProps,
   className,
@@ -29,10 +30,10 @@ export default function Card({
   title,
   subtitle,
   to,
-  props
+  properties
 }: CardProps) {
   const { t } = useTranslation();
-  
+
   return (
     <Link className={
       clsx(
@@ -40,7 +41,7 @@ export default function Card({
         className, {
         [styles.cardSimple]: isSimple
       })
-    } to={to ?? ''}>
+    } to={to}>
       <div className={clsx(styles.cardCover, styles.badge)}>
         <img
           src={imageUrl}
@@ -56,8 +57,9 @@ export default function Card({
       <span className={clsx(styles.cardSubtitle, styles.cardSubtitleMobile)}>({subtitle})</span>
 
       <div className={styles.cardProps}>
-        {props && props.map(prop =>
-          <CardProp
+        {properties.map(prop =>
+          <CardProperty
+            key={`CardProperty-${prop.propName}`}
             propName={translateProps ? t(prop.propName) : prop.propName}
             value={prop.value}
             className={styles.cardProp}
@@ -69,3 +71,5 @@ export default function Card({
     </Link>
   )
 }
+
+export default withLoading(Card);

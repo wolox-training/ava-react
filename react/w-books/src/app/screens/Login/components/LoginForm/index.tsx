@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
-import withLoading from '../../../../components/Loading';
+
+import PATHS from '../../../../components/Routes/paths';
 import ErrorMessage from '../../../../components/ErrorMessage';
 
 import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
-import { LOGIN, postUser } from '../../../../../services/userService';
-import Session from '../../../../../types/Session';
+import { login } from '../../../../../services/userService';import Session from '../../../../../types/Session';
 import { useDispatch } from '../../../../contexts/UserContext';
 import { actionCreators } from '../../../../contexts/UserContext/reducer';
 import { saveData, SESSION } from '../../../../../utils/manageData';
@@ -27,16 +27,16 @@ interface LoginFormProps {
   handleLogin?: (formData: UserData) => void;
 }
 
-export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
+function LoginForm({ testId, handleLogin }: LoginFormProps) {
   const { t } = useTranslation();
   const { errors, register, handleSubmit } = useForm<UserData>();
   const dispatch = useDispatch();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => postUser(LOGIN, data, handleSession),
+    request: (data: UserData) => login(data, handleSession),
   })
 
-  const login = (formData: UserData): void => {
+  const onSubmit = (formData: UserData) => {
     if (formData) {
       request(formData)
     }
@@ -48,7 +48,7 @@ export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
   }
 
   return (
-      <Form className={styles.loginForm} handleSubmit={handleSubmit(handleLogin ?? login)} testId={testId}>
+      <Form className={styles.loginForm} handleSubmit={handleSubmit(handleLogin ?? onSubmit)} testId={testId}>
         <FormRow
           labelName={t('LoginForm:UserFormEmail')}
           className={styles.formRow}
@@ -80,16 +80,17 @@ export default function LoginForm({ testId, handleLogin }: LoginFormProps) {
 
         {error && (<ErrorMessage>{t(`LoginForm:${error.problem}`)}</ErrorMessage>)}
 
-        {
-          withLoading(Button)({
-            loading,
-            loadingClassName: styles.loading,
-            isFilled:true, 
-            isSubmit:true,
-            children: t('Common:LoginButton'),
-          })
-        }
+        <Button
+          loading={loading}
+          loadingClassName={styles.loading}
+          isFilled
+          isSubmit
+        >
+          {t('Common:LoginButton')}
+        </Button>
 
       </Form>
   );
 }
+
+export default LoginForm;

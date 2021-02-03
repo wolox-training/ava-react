@@ -1,26 +1,27 @@
 import React from 'react';
+import withLoading from '../Loading';
 
 import Card, { iCard } from '../Card';
 
 import styles from './styles.module.scss';
 
 interface CardListProps {
-  items: iCard[]
+  items: iCard[];
+  loading?: boolean;
 }
 
-export default function CardList({ items }: CardListProps) {
+function CardList({ items, loading }: CardListProps) {
   return (
     <div className={styles.cardList}>
       {items.map(item =>
         <Card
-          imageUrl={item.imageUrl}
-          id={item.id}
-          title={item.title}
-          subtitle={item.subtitle}
-          to={item.to}
-          props={item.props}
+          key={`Card-${item.id}`}
           isSimple
+          loading={loading}
+          {...item}
         />)}
     </div>
   )
 }
+
+export default withLoading(CardList);

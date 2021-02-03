@@ -1,21 +1,18 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useRequest } from '../../../hooks/useRequest';
 import { getBooks } from '../../../services/booksService';
 
-import Navbar from '../../components/Navbar';
-import ErrorMessage from '../../components/ErrorMessage';
-import withLoading from '../../components/Loading';
+import Layout from '../../components/Layout';
+import Loading from '../../components/Loading';
 import CardList from '../../components/CardList';
 
 import styles from './styles.module.scss';
 import { bookToCard } from '../../../utils/bookToCard';
-import ButtonLanguage from '../../components/ButtonLanguage';
 import { useSelector } from '../../contexts/UserContext';
 
-export default function Home() {
+function Home() {
   const { t } = useTranslation();
 
   const session = useSelector(state => state.session);
@@ -24,22 +21,15 @@ export default function Home() {
     request: () => getBooks(session),
     payload: null,
   }, []);
-
   return (
-    <>
-      <Navbar />
-
-      {error && (<ErrorMessage className={styles.container}>{t(`Home:${error.problem}`)}</ErrorMessage>)}
-
-      {
-        withLoading(CardList)({
-          loading,
-          loadingClassName: styles.container,
-          items: response?.page ? response.page.map(bookToCard) : []
-        })
-      }
-      
-      <ButtonLanguage className={styles.languagesContainer} />
-    </>
+    <Layout error={error} errorMessage={t(`Home:${error?.problem}`)}>
+      <CardList
+        loading={loading}
+        loadingClassName={styles.container}
+        items={response?.page ? response.page.map(bookToCard) : []}
+      />
+    </Layout>
   )
 }
+
+export default Home;

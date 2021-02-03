@@ -10,7 +10,7 @@ import { useDispatch } from '../../contexts/UserContext';
 import { actionCreators } from '../../contexts/UserContext/reducer';
 import { deleteData, SESSION } from '~utils/manageData';
 
-export default function Navbar() {
+function Navbar() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -31,3 +31,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar;

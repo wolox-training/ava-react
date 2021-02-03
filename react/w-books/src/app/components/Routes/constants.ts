@@ -10,23 +10,20 @@ interface Route {
   exact: boolean;
   path: string;
   component: LazyExoticComponent<any>;
-  restricted?: boolean;
   private?: boolean;
 }
 
-const ROUTES: Route[] = [
+export const ROUTES: Route[] = [
   {
     exact: true,
     path: PATHS.login,
     component: Login,
-    restricted: true,
     private: false
   },
   {
     exact: true,
     path: PATHS.signUp,
     component: SignUp,
-    restricted: true,
     private: false
   },
   {
@@ -42,5 +39,3 @@ const ROUTES: Route[] = [
     private: true
   }
 ];
-
-export { ROUTES };

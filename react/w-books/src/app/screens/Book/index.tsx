@@ -2,56 +2,49 @@ import React from 'react';
 import { match } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
-import { getBooks } from '../../../services/booksService';
+import { getBook } from '../../../services/booksService';
 import { useRequest } from '../../../hooks/useRequest';
 import { bookToCard } from '../../../utils/bookToCard';
+import { getData, SESSION } from '../../../utils/manageData';
 
 import styles from './styles.module.scss';
 
 import ButtonBack from '../../components/ButtonBack';
 import PATHS from '../../components/Routes/paths';
 import Card from '../../components/Card';
-import ButtonLanguage from '../../components/ButtonLanguage';
-import ErrorMessage from '../../components/ErrorMessage';
-import withLoading from '../../components/Loading';
+import Layout from '../../components/Layout';
 import { useSelector } from '../../contexts/UserContext';
-
-
 interface BookProps {
   match: match<{ id: string }>;
 }
 
-export default function Book({ match: urlParams }: BookProps) {
+function Book({ match: urlParams }: BookProps) {
   const { t } = useTranslation();
 
   const bookId = urlParams.params.id;
   const session = useSelector(state => state.session);
 
   const [book, loading, error] = useRequest({
-    request: () => getBooks(session, bookId),
+    request: () => getBook(session, bookId),
     payload: null,
   }, []);
 
   return (
-    <>
+    <Layout error={error} errorMessage={t(`Book:${error?.problem}`)}>
       <div className={styles.bookPage}>
         <aside className={styles.aside}>
           <ButtonBack path={PATHS.home} />
         </aside>
-        {
-          withLoading(Card)({
-            loading,
-            loadingClassName: styles.container,
-            className: styles.bookCard,
-            translateProps: true,
-            ...bookToCard(book)
-          })
-        }
+        <Card
+          loading={loading}
+          loadingClassName={styles.container}
+          className={styles.bookCard}
+          translateProps={true}
+          {...bookToCard(book)}
+        />
       </div>
-
-      {error && (<ErrorMessage className={styles.container}>{t(`Book:${error.problem}`)}</ErrorMessage>)}
-
-      <ButtonLanguage className={styles.container} />
-    </>
+    </Layout>
   )
 }
+
+export default Book;
