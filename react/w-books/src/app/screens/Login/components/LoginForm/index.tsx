@@ -1,20 +1,21 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { Redirect } from 'react-router-dom';
 
 import Form from '../../../../components/Form';
 import FormRow from '../../../../components/FormRow';
 import Button from '../../../../components/Button';
+
 import PATHS from '../../../../components/Routes/paths';
 import ErrorMessage from '../../../../components/ErrorMessage';
 
 import styles from './styles.module.scss';
 
 import { useLazyRequest } from '../../../../../hooks/useRequest';
-import { login } from '../../../../../services/userService';
+import { login } from '../../../../../services/userService';import Session from '../../../../../types/Session';
+import { useDispatch } from '../../../../contexts/UserContext';
+import { actionCreators } from '../../../../contexts/UserContext/reducer';
 import { saveData, SESSION } from '../../../../../utils/manageData';
-import Session from '../../../../../types/Session';
 
 interface UserData {
   email?: string;
@@ -29,9 +30,10 @@ interface LoginFormProps {
 function LoginForm({ testId, handleLogin }: LoginFormProps) {
   const { t } = useTranslation();
   const { errors, register, handleSubmit } = useForm<UserData>();
+  const dispatch = useDispatch();
 
   const [userData, loading, error, request] = useLazyRequest({
-    request: (data: UserData) => login(data, setSession),
+    request: (data: UserData) => login(data, handleSession),
   })
 
   const onSubmit = (formData: UserData) => {
@@ -40,11 +42,12 @@ function LoginForm({ testId, handleLogin }: LoginFormProps) {
     }
   }
 
-  const setSession = (session: Session) => saveData(SESSION, session);
+  const handleSession = (session: Session): void => {
+    saveData(SESSION, session);
+    dispatch(actionCreators.setSession(session));
+  }
 
   return (
-    userData ?
-      <Redirect to={PATHS.home} /> :
       <Form className={styles.loginForm} handleSubmit={handleSubmit(handleLogin ?? onSubmit)} testId={testId}>
         <FormRow
           labelName={t('LoginForm:UserFormEmail')}

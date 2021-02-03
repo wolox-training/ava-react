@@ -13,7 +13,7 @@ import ButtonBack from '../../components/ButtonBack';
 import PATHS from '../../components/Routes/paths';
 import Card from '../../components/Card';
 import Layout from '../../components/Layout';
-
+import { useSelector } from '../../contexts/UserContext';
 interface BookProps {
   match: match<{ id: string }>;
 }
@@ -22,9 +22,10 @@ function Book({ match: urlParams }: BookProps) {
   const { t } = useTranslation();
 
   const bookId = urlParams.params.id;
+  const session = useSelector(state => state.session);
 
   const [book, loading, error] = useRequest({
-    request: () => getBook(getData(SESSION), bookId),
+    request: () => getBook(session, bookId),
     payload: null,
   }, []);
 
