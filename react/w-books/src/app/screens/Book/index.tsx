@@ -5,15 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { getBook } from '../../../services/booksService';
 import { useRequest } from '../../../hooks/useRequest';
 import { bookToCard } from '../../../utils/bookToCard';
+import { getData, SESSION } from '../../../utils/manageData';
 
 import styles from './styles.module.scss';
 
 import ButtonBack from '../../components/ButtonBack';
 import PATHS from '../../components/Routes/paths';
 import Card from '../../components/Card';
-import ButtonLanguage from '../../components/ButtonLanguage';
-import ErrorMessage from '../../components/ErrorMessage';
-import { getData, SESSION } from '../../../utils/manageData';
+import Layout from '../../components/Layout';
 
 interface BookProps {
   match: match<{ id: string }>;
@@ -30,7 +29,7 @@ function Book({ match: urlParams }: BookProps) {
   }, []);
 
   return (
-    <>
+    <Layout error={error} errorMessage={t(`Book:${error?.problem}`)}>
       <div className={styles.bookPage}>
         <aside className={styles.aside}>
           <ButtonBack path={PATHS.home} />
@@ -43,11 +42,7 @@ function Book({ match: urlParams }: BookProps) {
           {...bookToCard(book)}
         />
       </div>
-
-      {error && (<ErrorMessage className={styles.container}>{t(`Book:${error.problem}`)}</ErrorMessage>)}
-
-      <ButtonLanguage className={styles.container} />
-    </>
+    </Layout>
   )
 }
 

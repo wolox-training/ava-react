@@ -7,7 +7,7 @@ import PATHS from '../Routes/paths';
 import styles from './styles.module.scss';
 
 interface ButtonBackProps {
-  path: typeof PATHS.signUp |  typeof PATHS.login |  typeof PATHS.book |  typeof PATHS.home; 
+  path: PATHS;
 }
 
 export default function ButtonBack({ path }: ButtonBackProps) {

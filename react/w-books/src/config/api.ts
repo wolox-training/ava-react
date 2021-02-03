@@ -38,13 +38,10 @@ api.addRequestTransform(request => {
 });
 
 export function getSession(response:ApiResponse<any, any>) {
-  const headers:any = response.headers;
+  const headers: any = response.headers;
+  const { uid, client, "access-token": accessToken } = headers;
 
-  return {
-    'uid': headers.uid, 
-    'access-token': headers['access-token'], 
-    'client': headers.client, 
-  };
+  return { uid, client, "access-token": accessToken };
 }
 
 export function setSession(session:Session) {

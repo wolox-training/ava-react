@@ -22,5 +22,12 @@ export function bookToCard(book: Book): iCard {
         value: `${book.year}`,
       }
     ]
-  } : {};
+  } : {
+    id: 0,
+    title: '',
+    to: PATHS.home,
+    subtitle: '',
+    imageUrl: '',    
+    properties: [],
+  };
 }
