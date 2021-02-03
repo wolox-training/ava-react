@@ -19,6 +19,7 @@ function Input({ className, id, type, handleChange, register }: InputProps): JSX
     <input
       type={type}
       name={id}
+      data-testid={id}
       className={clsx(styles.input, className)}
       onChange={handleChange}
       ref={register}

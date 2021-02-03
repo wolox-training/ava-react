@@ -1,0 +1,19 @@
+@import '../../../scss/sizes';
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  justify-content: center;
+  margin: auto;
+  max-width: 100%;
+  padding: 35px;
+  width: 1025px;
+}
+
+@media (max-width: $breakpoint-tablet) {
+
+  .card-list {
+    padding: 15px;
+  }
+}

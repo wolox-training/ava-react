@@ -1,0 +1,27 @@
+@import '../../../scss/sizes';
+
+.button-back {
+  align-items: center;
+  display: flex;
+  font-size: 22px;
+  height: 30px;
+  margin: 20px;
+
+  &::before {
+    content: '';
+    background: url('../../assets/img/back-arrow-20.png') no-repeat;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+
+  .aside {
+
+    .button-back {
+      font-size: 18px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+
 import LinkButton from '~components/Link';
 import PATHS from '~components/Routes/paths';
 
