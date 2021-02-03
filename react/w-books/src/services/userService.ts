@@ -1,28 +1,28 @@
 import { ApiResponse } from 'apisauce';
-import { saveData, SESSION } from '~utils/manageData';
-import api from '../config/api';
+import api, { getSession } from '../config/api';
 
-export async function login(user: any, handleAccessToken?: (accessToken: string) => void): Promise<ApiResponse<any, any>> {
+import Session from '../types/Session';
+
+export async function login(user: any, handleSession?: (session: Session) => void): Promise<ApiResponse<any, any>> {
   const response = await api.post(`users/sign_in`, user);
 
-  startSession(response, handleAccessToken);
+  startSession(response, handleSession);
 
   return response;
 }
 
-export async function signUp(user: any, handleAccessToken?: (accessToken: string) => void): Promise<ApiResponse<any, any>> {
+export async function signUp(user: any, handleSession?: (session: Session) => void): Promise<ApiResponse<any, any>> {
   const response = await api.post(`users`, user);
 
-  startSession(response, handleAccessToken);
+  startSession(response, handleSession);
 
   return response;
 }
 
-function startSession(response: ApiResponse<any, any>, handleAccessToken?: (accessToken: string) => void) {
+function startSession(response: ApiResponse<any, any>, handleSession?: (session: Session) => void) {
   if (response.ok) {
-    const headers: any = response.headers;
-    const accessToken = headers['access-token'];
+    const session = getSession(response);
 
-    handleAccessToken?.(accessToken);
+    handleSession?.(session);
   }
 }
