@@ -1,6 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
+import Session from '../../../../../types/Session';
+import { Nullable } from '../../../../../utils/types';
+
 import PATHS from '../../paths';
 
 interface CustomRouteProps {
@@ -8,7 +11,7 @@ interface CustomRouteProps {
   path: string;
   exact: boolean;
   isPrivate?: boolean;
-  hasSession: boolean;
+  hasSession: Nullable<Session>;
 }
 
 function CustomRoute({ component: Component, path, exact, isPrivate, hasSession }: CustomRouteProps) {

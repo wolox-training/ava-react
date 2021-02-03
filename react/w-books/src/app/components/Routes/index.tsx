@@ -18,7 +18,7 @@ function Routes() {
                 path={route.path}
                 exact={route.exact}
                 isPrivate={route.private}
-                hasSession={session ? true : false}
+                hasSession={session}
               />)
           }
         </Switch>
