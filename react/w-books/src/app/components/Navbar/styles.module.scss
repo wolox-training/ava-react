@@ -1,0 +1,39 @@
+@import '../../../scss/colors';
+
+@import '../../../scss/animations';
+
+.nav {
+  align-items: center;
+  background-color: $background-color;
+  box-shadow: 0 4px 10px 0 $border-color;
+  display: flex;
+  height: 70px;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  &::before {
+    border-top: 6px solid $cerulean;
+    top: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+  }
+
+  .nav-logo {
+
+    @extend %zoom-in-animation;
+    height: 100%;
+  }
+
+  .nav-option {
+    color: $primary-text-color;
+    font-size: 18px;
+
+    &:hover {
+      color: $cerulean;
+      transition: all 0.8s;
+    }
+  }
+}

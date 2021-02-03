@@ -4,9 +4,10 @@ interface FormProps {
   handleSubmit?: (event: React.FormEvent) => void;
   children: ReactNode;
   className?: string;
+  testId?: string;
 }
 
-function Form({ handleSubmit, className, children }: FormProps) {
+function Form({ handleSubmit, className, children, testId }: FormProps) {
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -14,7 +15,7 @@ function Form({ handleSubmit, className, children }: FormProps) {
   };
   
   return (
-    <form onSubmit={handleFormSubmit} className={className}>
+    <form onSubmit={handleFormSubmit} className={className} data-testid={testId}>
       {children}
     </form>
   );
