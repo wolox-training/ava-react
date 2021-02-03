@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
+import withLoading from '../Loading';
 
 interface ButtonProps {
   children: ReactNode;
@@ -31,4 +32,4 @@ function Button({ children, isSubmit, className, isFilled, isWidthAuto, handleCl
   );
 }
 
-export default Button;
+export default withLoading(Button);

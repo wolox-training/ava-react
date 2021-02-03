@@ -1,5 +1,7 @@
-import { create } from 'apisauce';
+import { ApiResponse, create } from 'apisauce';
 import { CamelcaseSerializer, SnakecaseSerializer } from 'cerealizr';
+import { func } from 'prop-types';
+import Session from 'types/Session';
 const deserializer = new CamelcaseSerializer();
 const serializer = new SnakecaseSerializer();
 const baseURL = process.env.REACT_APP_API_BASE_URL;
@@ -34,4 +36,16 @@ api.addRequestTransform(request => {
     request.data = serializer.serialize(request.data);
   }
 });
+
+export function getSession(response:ApiResponse<any, any>) {
+  const headers: any = response.headers;
+  const { uid, client, "access-token": accessToken } = headers;
+
+  return { uid, client, "access-token": accessToken };
+}
+
+export function setSession(session:Session) {
+  api.setHeaders({...session});
+}
+
 export default api;

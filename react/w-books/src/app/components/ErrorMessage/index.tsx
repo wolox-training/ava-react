@@ -1,14 +1,16 @@
+import clsx from 'clsx';
 import React, { ReactNode } from 'react';
 
 import styles from './styles.module.scss';
 
 interface ErrorMessageProps {
   children: ReactNode;
+  className?: string;
 }
 
-function ErrorMessage({children}:ErrorMessageProps) {
+function ErrorMessage({children, className}:ErrorMessageProps) {
   return (
-    <div className={styles.errorMessage}>
+    <div className={clsx(styles.errorMessage, className)}>
       {children}
     </div>
   )

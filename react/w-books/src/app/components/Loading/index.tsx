@@ -1,18 +1,34 @@
-import clsx from 'clsx';
 import React from 'react';
 
 import Loader from '../../assets/img/loader-green.svg';
 
-import styles from './styles.module.scss';
-
 interface LoadingProps {
-  isGreen?: boolean;
+  className?: string;
 }
 
-function Loading({ isGreen }: LoadingProps): JSX.Element {
+function Loading({ className}: LoadingProps): JSX.Element {
   return (
-    <img src={Loader}/>
+    <div className={className}>
+      <img src={Loader} />
+    </div>
   )
 }
 
-export default Loading;
+interface WithLoadingProps {
+  loading?: boolean;
+  loadingClassName?: string;
+}
+
+function withLoading<P extends object>(
+  Component: React.ComponentType<P>
+): React.FC<P & WithLoadingProps> {
+
+  return ({
+    loading,
+    loadingClassName,
+    ...props
+  }: WithLoadingProps) =>
+    loading ? <Loading className={loadingClassName} /> : <Component {...props as P} />;
+}
+
+export default withLoading;
