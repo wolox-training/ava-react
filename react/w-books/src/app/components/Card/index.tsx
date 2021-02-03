@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import withLoading from '../Loading';
 import CardProperty, { iCardProperty } from '../CardProperty';
 
 import styles from './styles.module.scss';
@@ -71,4 +72,4 @@ function Card({
   )
 }
 
-export default Card;
+export default withLoading(Card);

@@ -3,7 +3,7 @@ import { iCard } from '../app/components/Card';
 import PATHS from "../app/components/Routes/paths";
 
 export function bookToCard(book: Book): iCard {
-  return {
+  return book ? {
     ...book,
     subtitle: book.genre,
     to: PATHS.book.replace(':id', `${book.id}`),
@@ -22,5 +22,12 @@ export function bookToCard(book: Book): iCard {
         value: `${book.year}`,
       }
     ]
+  } : {
+    id: 0,
+    title: '',
+    to: PATHS.home,
+    subtitle: '',
+    imageUrl: '',    
+    properties: [],
   };
 }
